@@ -1,0 +1,30 @@
+title: Mr Mannequins Docs
+description: Official documentation for Mr Mannequins tools and workflows.
+theme: just-the-docs
+
+url: https://jim-kroovy.github.io
+baseurl: /mr_mannequins_docs
+
+color_scheme: dark
+search_enabled: true
+heading_anchors: true
+
+strict_front_matter: true
+liquid:
+  error_mode: strict
+  strict_filters: true
+
+defaults:
+  - scope:
+      path: docs
+      type: pages
+    values:
+      layout: default
+
+# anything underscored (like _templates) is already skipped...
+exclude:
+  - README.md
+  - STYLE_GUIDE.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

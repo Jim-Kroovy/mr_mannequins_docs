@@ -1,0 +1,12 @@
+{%- comment -%}
+  Include as: {% include media/youtube.html id="VIDEO_ID" title="What the video shows" %}
+  Optional: start=seconds. Leave out the id for a video placeholder.
+{%- endcomment -%}
+{%- if include.id -%}
+<figure class="media-video">
+<iframe src="https://www.youtube-nocookie.com/embed/{{ include.id }}?rel=0{% if include.start %}&amp;start={{ include.start }}{% endif %}" title="{{ include.title | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</figure>
+<p class="media-caption"><a href="https://www.youtube.com/watch?v={{ include.id }}">Watch on YouTube: {{ include.title | escape }}</a></p>
+{%- else -%}
+<div class="media-placeholder"><strong>Video placeholder:</strong> {{ include.title | escape }}</div>
+{%- endif -%}
