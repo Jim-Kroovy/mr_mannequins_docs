@@ -23,6 +23,7 @@ defaults:
 
 # anything underscored (like _templates) is already skipped...
 exclude:
+  - OPERATOR_AUDIT.md
   - README.md
   - STYLE_GUIDE.md
   - Gemfile

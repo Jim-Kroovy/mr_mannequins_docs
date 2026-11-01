@@ -23,8 +23,10 @@ print("placeholder")
 
 {% include media/screenshot.html alt="Sample of an unfinished screenshot" %}
 
+{% include media/screenshot.html src="assets/images/sample-screenshot.svg" alt="Grey sample image with a dashed border" caption="Sample image, not a real screenshot." %}
+
 {% include media/youtube.html title="Sample of an unfinished video" %}
 
 ## Related
 
-- [Example Operator]({% link docs/all-the-tools/example-operator.md %})
+- [Apply Meshes]({% link docs/all-the-tools/utilities/apply-meshes.md %})

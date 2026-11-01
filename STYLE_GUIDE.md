@@ -25,7 +25,7 @@ Assume the reader already knows Blender, Unreal and 3D work. Don't explain what 
 ## Names and URLs
 
 - Page titles use the name the UI uses, in title case.
-- Every page sets an explicit `permalink` in the form `/category/page-name/`, lowercase and hyphenated.
+- Every page sets an explicit `permalink` in the form `/category/page-name/`, lowercase and hyphenated. Operator pages use `/all-the-tools/category/operator-name/`.
 - Don't change a published permalink. Links and search results out in the wild depend on it.
 
 ## Media
