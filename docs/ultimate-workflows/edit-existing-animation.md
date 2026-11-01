@@ -7,15 +7,15 @@ permalink: /ultimate-workflows/edit-existing-animation/
 
 # Edit Existing Animation
 
-Import an existing Unreal Engine animation into Blender, edit it, and export it back to Unreal Engine on the same skeleton.
+Import existing animation FBX files from any source, edit them with Mr Mannequins Tools and export the results. You can then take those exports wherever they're needed, including Unreal Engine.
 
-If your character comes with its own actions, follow Setup Custom Character instead (planned guide).
+Your skeleton doesn't need to be compatible with anything to import it. Compatibility only matters if you choose the optional Target route.
+
+If you're importing skeletal meshes or a custom character, follow Setup Custom Character instead (planned guide).
 
 ## Requirements
 
-- Mr Mannequins Tools enabled in Blender.
-- One or more animation FBX files exported from Unreal Engine. All of the steps below assume these files have no skeletal mesh in them.
-- The Skeleton asset those animations use, still in your Unreal Engine project.
+- One or more FBX animation files.
 
 ## Procedure
 
@@ -23,38 +23,40 @@ There are two ways in. Follow one of them, then carry on from step 3.
 
 | Route | Use it when | Steps |
 | ----- | ----------- | ----- |
-| Without a Target | You just want to edit the animation, or you have nothing in the file to retarget onto. | 1A, then 2 |
-| With a Target | The file already has a compatible armature that should receive the actions. | 1B |
+| Without a Target | Compatibility is unknown, or you just want to edit the animation. This is the safe route. | 1A, then 2 |
+| With a Target (optional) | You already know the skeleton is compatible with an armature in the file. | 1B, then 2 only if the Target has no Oriented armature |
 
 ### 1A. Import without a Target
 
 1. Open `File > Import > Mr Mannequins FBX (.fbx)`. See [Import Mr Mannequins FBX]({% link docs/all-the-tools/importing/import-mr-mannequins-fbx.md %}).
-2. Select one or more files. Files with matching skeletons are merged onto one armature.
+2. Select one or more files. Files with the same bone names, hierarchy and rest poses are merged onto one armature.
 3. Leave **Target** in the Retargeting panel on None.
-4. Optional: set **Decimate Keyframes** in the Cleaning panel if you want fewer keys to edit. It's off by default and can be slow on dense animation.
+4. Optional: set **Decimate Keyframes** in the Cleaning panel if you want fewer keys to edit. It's None by default and can be slow on dense animation.
 5. Confirm the import.
 
-You get one armature named `<file>_Skeleton`, with an action named after each file, stashed in the NLA.
+You get one armature named `<file>_Skeleton` for each different skeleton, with an action named after each file, stashed in the NLA.
 
 {% include media/screenshot.html alt="Blender file browser in File > Import > Mr Mannequins FBX with two animation FBX files selected and the Retargeting panel open, Target set to None" %}
 
-### 1B. Import directly onto a compatible Target
+### 1B. Optional: import directly onto a compatible Target
 
-This replaces steps 1A and 2. Only use it when you know the two skeletons are compatible, because retargeting matches bones by name and through any bone mappings. Bones that don't match don't get keyed.
+This replaces step 1A. Only use it when you already know the skeletons are compatible, for example with a previously configured custom character or a mannequin template. Retargeting matches bones by name and through any bone mappings, and bones that don't match don't get keyed. It also works relative to rest poses, so the file's rest pose has to match the Target's. If you don't know, use step 1A.
 
 The Target has to be in the file before you import. It can be an armature from an earlier import, or one added from `Add > Template` with [Template]({% link docs/all-the-tools/templates/template.md %}).
 
 1. Open `File > Import > Mr Mannequins FBX (.fbx)` and select your files.
 2. Set **Target** in the Retargeting panel to the receiving armature.
-3. Leave **Actions** on. **Meshes** doesn't affect animation only files.
+3. Leave **Actions** on.
 4. Optional: set **Decimate Keyframes** in the Cleaning panel. **After** runs on the retargeted result, and **Before** runs ahead of retargeting so there's less to process.
 5. Confirm the import.
 
-The actions land on the highest tier of the Target's hierarchy and get stashed there under their file names, and the imported skeleton is removed. If the Target has an Oriented armature, skip to step 3 and work on that.
+The actions land on the highest tier of the Target's hierarchy and get stashed there under their file names, and the imported skeleton is removed. The last imported action is left active on that armature. If the Target already has an Oriented armature, skip step 2 and go straight to step 3 using that armature.
 
 If that hierarchy has a Rigging armature, the actions get baked onto its rigging, so working with them is outside this guide. See Rapid Rigging (planned guide).
 
-If the Target only has an Original armature, or is an untagged one, run step 2 on it before editing.
+If the Target has no Oriented armature, run step 2 on it before editing.
+
+**Adding more animations later:** to import more animation files for a character you've already set up, pick its existing armature as the **Target**. Importing without a Target creates a separate `<file>_Skeleton` armature and doesn't merge into the existing one, because files only merge within a single import. Using a compatible Target avoids those extra armatures.
 
 {% include media/screenshot.html alt="Blender file browser in File > Import > Mr Mannequins FBX with the Retargeting panel open, a Target armature picked, Actions on, and the Cleaning panel showing Decimate Keyframes set to After" %}
 
@@ -62,7 +64,9 @@ If the Target only has an Original armature, or is an untagged one, run step 2 o
 
 Armatures imported from FBX keep the source skeleton's bone directions and rolls. This step builds a second armature with matching bone names whose bones are oriented for Blender, using shortest rolls.
 
-This step is required for this workflow when you import without a compatible Target. It gives you a compatible armature for editing, and for any rigging and retargeting you do afterwards. Rigging tools and bone mappings aren't available without one.
+You only need this step when the armature doesn't already have an Oriented armature. That's always the case after step 1A, because importing animation without a Target doesn't create one. It prepares the armature for editing, rigging and retargeting, and rigging tools and bone mappings aren't available without one.
+
+If it already has one, skip to step 3 and use it. The button in the steps below reads **Update Oriented Armature** in that case, instead of **Create Oriented Armature**.
 
 It isn't a general requirement for exporting. The export can also run on an imported armature that has no Oriented armature.
 
@@ -86,7 +90,7 @@ Both armatures finish at rest with no active action. **Max Length** only affects
 
 The add-on doesn't have an operator for picking an action, so use Blender's Action Editor. Once an action is active, the add-on's action tools in step 4 work on it.
 
-1. With the Oriented armature active, enter Pose mode.
+1. Select the Oriented armature so it's active, then enter Pose mode. After a Target import nothing is left selected or active.
 2. Open a Dope Sheet in **Action Editor** mode.
 3. Pick the imported action from the action selector. Stashed actions are in the NLA as muted, locked tracks, and they're also listed here.
 4. If the action doesn't play, check that Blender has assigned it an action slot.
@@ -125,37 +129,39 @@ To keep your untouched source animation in Blender, duplicate the action first a
    - **Only Active** exports just the action currently assigned.
    - **All Actions** exports every action that animates the armature's bones.
 5. Leave **Batch Export** on for one FBX per action. Off merges them into one file as separate animation stacks.
-6. Optional: turn off **Export** in the Meshes panel. This guide only imported animation, so with just the armature selected there are no meshes to write anyway.
+6. Optional: turn off **Export** in the Meshes panel, since this guide only exports actions.
 7. Leave the Advanced panel on its defaults unless you have a reason to change it. **Background Export** should stay on.
 8. Confirm the export.
 
-Each action is baked from the Oriented armature onto the Original, one key per frame across the action's frame range, then written to FBX. The Original's bones are what end up in the file, so the skeleton matches what you imported. Actions imported from `Walk.fbx` export as `Walk.fbx`, so choose a different folder or rename the action if you don't want to overwrite your source file.
+Each action is baked from the Oriented armature onto the Original, one key per frame across the action's frame range, then written to FBX. The Original's bones are what end up in the file. Without a Target that's the skeleton you imported, and with a Target it's the Target's skeleton. Actions imported from `Walk.fbx` export as `Walk.fbx`, so choose a different folder or rename the action if you don't want to overwrite your source file. A name Blender has suffixed exports with an underscore, so `Walk.001` writes `Walk_001.fbx`.
 
 {% include media/screenshot.html alt="Blender file browser in File > Export > Mr Mannequins FBX with the Actions panel set to Only Stashed and Batch Export on, and Export off in the Meshes panel" %}
 
-### 6. Import back into Unreal Engine
+### 6. Optional: import into Unreal Engine
+
+This step only applies if Unreal Engine is where the animation is going.
 
 1. Import the exported FBX into your Unreal Engine project.
-2. In the import options, choose the original Skeleton asset the animation came from.
+2. In the import options, choose the Skeleton asset that matches the exported skeleton.
 3. Open the imported animation to check it.
 
 Import option names and other settings can vary, so check them in your version of Unreal Engine.
 
-{% include media/screenshot.html alt="Unreal Engine import options for the exported FBX, with the original Skeleton asset selected" %}
+{% include media/screenshot.html alt="Unreal Engine import options for the exported FBX, with the matching Skeleton asset selected" %}
 
 ## Video
 
-{% include media/youtube.html title="The full Edit Existing Animation workflow: importing an Unreal Engine animation FBX, creating the Oriented armature, editing an action in Pose mode, exporting it and importing it back onto its skeleton in Unreal Engine" %}
+{% include media/youtube.html title="The full Edit Existing Animation workflow: importing an animation FBX, creating the Oriented armature, editing an action in Pose mode, exporting it and optionally importing it onto a matching skeleton in Unreal Engine" %}
 
 ## Limitations
 
-- **Keep the skeleton intact.** Don't rename, add or remove bones on the Original if the animation has to go back onto the same Skeleton asset. The export writes whatever bones the Original has.
+- **Keep the skeleton intact.** Don't rename, add or remove bones on the Original if the animation has to go back onto the same skeleton. The export writes whatever bones the Original has.
 - **Decimated keys don't survive export.** The export bakes every frame, so decimating only helps while you edit. **Simplify** in the Advanced panel controls reduction in the FBX itself.
 - **Everything on the Original gets baked.** Exported motion is the evaluated result of the Original's constraints, so bones it can't follow won't export as you posed them.
 - **The root bone can be added on import.** If no bone is named after the imported armature object, a root bone with that name is added, and object level animation moves onto it. At export the armature is temporarily renamed `Armature` to stop an extra root bone being written.
-- **Files with skeletal meshes behave differently.** With a Target they go through the mesh retargeting path instead of the animation path described here, and without one the armature finishes at rest with its actions stashed.
 - **Turning off Background Export changes your open file.** Only do it for debugging.
-- **Animation Offset defaults to 1 frame on import.** It's in the Advanced panel.
+- **Animation Offset moves your timing.** It defaults to 1 frame on import, and batched exports keep the action's frame range. A file starting on frame 0 exports starting on frame 1, with the same motion one frame later, and each further import and export adds another frame. Set it to 0 in the Advanced panel on import to keep the source frames.
+- **Older exports can store the wrong rest pose.** Animation exported before Mr Mannequins Tools 5.0.22 can store a posed rest pose, so it can import wrong onto a Target and may not merge with other files. Export it again from 5.0.22 or later, or import it without a Target.
 
 ## Related
 
