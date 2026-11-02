@@ -84,7 +84,7 @@ Don't give the same chain bone to two modules. That isn't a supported setup, and
 Only do this if step 1 imported actions. They're on the Oriented armature now, and they need baking onto the rig so you can animate them with its controls.
 
 1. Make the Rigging armature active, in Pose mode.
-2. Open `Pose > Apply > Retarget Actions From`. See [Retarget]({% link docs/all_the_tools/retargeting/retarget.md %}).
+2. Open `Pose > Apply > Retarget Actions From`. See [Retarget Actions]({% link docs/all_the_tools/retargeting/retarget.md %}).
 3. In the redo panel, set **Target** to this character's own Oriented armature. It's listed even though Rigging is the highest tier. Nothing happens until you pick one.
 4. Leave **Only Selected** off for a complete bake.
 5. Set **Keep Original**. On keeps the Oriented actions and prefixes the new ones with the Original's name. **Off deletes the source actions** and gives the new ones their names.
@@ -92,7 +92,7 @@ Only do this if step 1 imported actions. They're on the Oriented armature now, a
 
 The new actions land on the Rigging armature. If the Oriented armature had an active action, its result is made active on Rigging, and everything else is stashed. Each bone's retargeting settings and name mappings decide what matches, and an action with no matching bones is skipped.
 
-{% include media/screenshot.html alt="3D Viewport in Pose mode on the Rigging armature with the Retarget redo panel showing the character's Oriented armature as Target, Only Selected off and Keep Original on" %}
+{% include media/screenshot.html alt="3D Viewport in Pose mode on the Rigging armature with the Retarget Actions redo panel showing the character's Oriented armature as Target, Only Selected off and Keep Original on" %}
 
 ## 5. Export Character
 
@@ -128,5 +128,5 @@ If the export has to go back onto an existing skeleton, the Original's hierarchy
 - [Import Mr Mannequins FBX]({% link docs/all_the_tools/importing/import_mr_mannequins_fbx.md %})
 - [Set Oriented Armature]({% link docs/all_the_tools/orientation/set_oriented_armature.md %})
 - [Add Rigging Module]({% link docs/all_the_tools/rigging/add_rigging_module.md %})
-- [Retarget]({% link docs/all_the_tools/retargeting/retarget.md %})
+- [Retarget Actions]({% link docs/all_the_tools/retargeting/retarget.md %})
 - [Export Mr Mannequins FBX]({% link docs/all_the_tools/exporting/export_mr_mannequins_fbx.md %})

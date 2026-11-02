@@ -104,7 +104,7 @@ Check the module settings, controls, mirrored sides, shared bones and IK/FK beha
 If your character has actions, retarget them onto the new controls now. They're still on the Oriented armature, and with Rigging above it the export won't find them there.
 
 1. Make your character's Rigging armature active, in Pose mode.
-2. Open `Pose > Apply > Retarget Actions From`. See [Retarget]({% link docs/all_the_tools/retargeting/retarget.md %}).
+2. Open `Pose > Apply > Retarget Actions From`. See [Retarget Actions]({% link docs/all_the_tools/retargeting/retarget.md %}).
 3. In the redo panel, set **Target** to your character's own Oriented armature.
 4. Leave **Only Selected** off and **Keep Original** on.
 
@@ -161,5 +161,5 @@ Import option names and other settings can vary, so check them in your version o
 - [Retarget Pose]({% link docs/all_the_tools/retargeting/retarget_pose.md %})
 - [Weight Meshes]({% link docs/all_the_tools/skinning/weight_meshes.md %})
 - [Copy Rigging]({% link docs/all_the_tools/rigging/copy_rigging.md %})
-- [Retarget]({% link docs/all_the_tools/retargeting/retarget.md %})
+- [Retarget Actions]({% link docs/all_the_tools/retargeting/retarget.md %})
 - [Export Mr Mannequins FBX]({% link docs/all_the_tools/exporting/export_mr_mannequins_fbx.md %})

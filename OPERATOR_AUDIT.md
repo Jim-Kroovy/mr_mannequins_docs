@@ -2,7 +2,7 @@
 
 Maintainer record of which operators are documented under All The Tools, and why. It isn't published.
 
-- Source: `mr_mannequins_tools` working tree at version 5.0.21, Git HEAD `5c1c90f`, including uncommitted changes and the untracked `keyframing` package.
+- Source: `mr_mannequins_tools` working tree at version 5.1.0, Git HEAD `5c1c90f`, including uncommitted changes and the untracked `keyframing` package.
 - Audit date: 2026-11-01. RNA values checked in Blender 5.0.0.
 - Inclusion rule: registered, not `INTERNAL`, and reachable from a menu, panel, button, shortcut or F3 Operator Search, unless it's listed under Public operators left unpublished.
 
@@ -33,7 +33,7 @@ The baseline count of 31 classes (30 public, 1 internal) still holds, and no ope
 | Retargeting | `retargeting/_operators.py` `MMT_OT_RetargetingAddMapping` | `mmt.add_mapping` | Add Mapping | `3D Viewport > Sidebar > Item > Retargeting`, the **+** on the Bone Mapping row; `Properties > Bone > Retargeting`, the **+** on the Bone Mapping row; F3 Operator Search | Public | `/all_the_tools/retargeting/add_mapping/` |
 | Retargeting | `retargeting/_operators.py` `MMT_OT_RetargetingKeyframes` | `mmt.fcurve` | Decimate Keyframes | `Dope Sheet > Key > Decimate Keyframes`; F3 Operator Search | Public | `/all_the_tools/retargeting/decimate_keyframes/` |
 | Retargeting | `retargeting/_operators.py` `MMT_OT_RetargetingRemoveMapping` | `mmt.remove_mapping` | Remove Mapping | `3D Viewport > Sidebar > Item > Retargeting`, the **X** on a mapping row; `Properties > Bone > Retargeting`, the **X** on a mapping row; F3 Operator Search | Public | `/all_the_tools/retargeting/remove_mapping/` |
-| Retargeting | `retargeting/_operators.py` `MMT_OT_RetargetingActions` | `mmt.actions` | Retarget | `Pose > Apply > Retarget Actions To`; `Pose > Apply > Retarget Actions From`; F3 Operator Search, which uses the From direction | Public | `/all_the_tools/retargeting/retarget/` |
+| Retargeting | `retargeting/_operators.py` `MMT_OT_RetargetingActions` | `mmt.actions` | Retarget Actions | `Pose > Apply > Retarget Actions To`; `Pose > Apply > Retarget Actions From`; F3 Operator Search, which uses the From direction | Public | `/all_the_tools/retargeting/retarget/` |
 | Retargeting | `retargeting/_operators.py` `MMT_OT_RetargetingPose` | `mmt.pose` | Retarget Pose | `Pose > Apply > Set Retarget Pose`; `Pose > Apply > Apply Retarget Pose`; F3 Operator Search, which uses the Set mode | Public | `/all_the_tools/retargeting/retarget_pose/` |
 | Rigging | `rigging/_operators.py` `MMT_OT_RiggingAddModule` | `mmt.add` | Add Rigging Module | `Pose > Add Rigging`, then a module type; `Shift + A` in Pose mode opens the same menu; `Properties > Armature > Rigging Modules`, the **+** button, which adds an empty module; F3 Operator Search, which adds an empty module | Public | `/all_the_tools/rigging/add_rigging_module/` |
 | Rigging | `rigging/_operators.py` `MMT_OT_RiggingCopy` | `mmt.copy` | Copy Rigging | `Properties > Armature > Rigging Modules`, the down arrow menu, **Copy Rigging** and **Paste Rigging**; F3 Operator Search, which uses Copy | Public | `/all_the_tools/rigging/copy_rigging/` |
@@ -48,7 +48,7 @@ The baseline count of 31 classes (30 public, 1 internal) still holds, and no ope
 | Shaping | `shaping/_operators.py` `MMT_OT_ShapingMirror` | `mmt.mirror` | Mirror Shape Keys | `Mesh > Vertex > Mirror Shape Keys` in Edit mode, greyed out unless the active object is a mesh with shape keys; F3 Operator Search | Public | `/all_the_tools/shaping/mirror_shape_keys/` |
 | Skinning | `skinning/_operators.py` `MMT_OT_SkinningSocket` | `mmt.socket` | Socket Meshes | `Object > Apply > Socket Meshes`; `Object > Apply > Unsocket Meshes`; F3 Operator Search, which uses Socket | Public | `/all_the_tools/skinning/socket_meshes/` |
 | Skinning | `skinning/_operators.py` `MMT_OT_SkinningWeight` | `mmt.weight` | Weight Meshes | `Weights > Weight Meshes` in Weight Paint mode; F3 Operator Search | Public | `/all_the_tools/skinning/weight_meshes/` |
-| Templates | `templates/_operators.py` `MMT_OT_TemplatesLoad` | `mmt.template` | Template | `Add > Template`, then a template, in the 3D Viewport; F3 Operator Search | Public | `/all_the_tools/templates/template/` |
+| Templates | `templates/_operators.py` `MMT_OT_TemplatesLoad` | `mmt.template` | Load Template | `Add > Template`, then a template, in the 3D Viewport; F3 Operator Search | Public | `/all_the_tools/templates/template/` |
 | Utilities | `utilities/_operators.py` `MMT_OT_UtilitiesApply` | `mmt.apply` | Apply Meshes | `Object > Apply > Apply Meshes`; F3 Operator Search | Public | `/all_the_tools/utilities/apply_meshes/` |
 | Utilities | `utilities/_operators.py` `MMT_OT_UtilitiesClean` | `mmt.clean` | Clean Meshes | `Object > Apply > Clean Meshes`; F3 Operator Search | Public | `/all_the_tools/utilities/clean_meshes/` |
 
@@ -122,7 +122,7 @@ Everything else in each published operator's RNA, including nested property grou
 | `mmt.snap` bl_label | `bl_label` is "Snap IK to FK" for both directions, so F3 and the redo panel title say that even for FK to IK. The page title follows the label. |
 | `keyframing/__init__.py` comment | The comment says split, transfer and redirect go in the Apply menu, but `add_keyframing_operators` also adds `mmt.generate_loops`. The page follows the code. `mmt.generate_locomotion` is F3 only, as the comment says. |
 | `mmt.generate_loops` naming | `bl_idname` says generate loops and `bl_label` says Add Oscillatory Motion. The page title follows the label. |
-| `mmt.actions` naming | `bl_label` is Retarget, while the menu shows Retarget Actions To and From. The page title follows the label. |
+| `mmt.actions` naming | `bl_label` is Retarget Actions, while the menu shows Retarget Actions To and From. The page title follows the label. |
 | `mmt.import` and `mmt.export` titles | Both have the `bl_label` Mr Mannequins FBX, and titles have to be unique, so the pages are titled Import Mr Mannequins FBX and Export Mr Mannequins FBX. The label is still given on each page. |
 | `mmt.mirror` enum wording | The Blend item's source description reads "over the the X axis". The page drops the repeated word. The source could use the same fix. |
 | `mmt.invoke` | It's registered but nothing calls it. It may be dead code rather than infrastructure, but either way it's excluded because it's `INTERNAL`. |

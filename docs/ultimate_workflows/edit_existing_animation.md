@@ -37,7 +37,7 @@ You get one armature named `<file>_Skeleton` for each different skeleton, with a
 
 This replaces step 1A. A compatible armature could be a previously configured custom character or a mannequin template. Retargeting matches bones by name and through any bone mappings, and bones that don't match don't get keyed. It also works relative to rest poses, so the file's rest pose has to match the Target's. If you don't know, use step 1A.
 
-The Target has to be in the file before you import. It can be an armature from an earlier import, or one added from `Add > Template` with [Template]({% link docs/all_the_tools/templates/template.md %}).
+The Target has to be in the file before you import. It can be an armature from an earlier import, or one added from `Add > Template` with [Load Template]({% link docs/all_the_tools/templates/template.md %}).
 
 1. Open `File > Import > Mr Mannequins FBX (.fbx)` and select your files.
 2. Set **Target** in the Retargeting panel to the receiving armature.
@@ -159,7 +159,7 @@ Import option names and other settings can vary, so check them in your version o
 - [Rapid Rigging]({% link docs/rapid_rigging/index.md %}): creating and configuring modular animation rigs. Start with [Add Rigging Module]({% link docs/all_the_tools/rigging/add_rigging_module.md %}).
 - Transfer Root Motion (planned guide): transferring motion between the pelvis and root bones. See the [Transfer Root Motion]({% link docs/all_the_tools/keyframing/transfer_root_motion.md %}) operator.
 - Redirect Root Motion (planned guide): changing movement direction to create alternative animations. See the [Redirect Root Motion]({% link docs/all_the_tools/keyframing/redirect_root_motion.md %}) operator.
-- Animation Retargeting (planned guide): transferring animations between different armatures. See the [Retarget]({% link docs/all_the_tools/retargeting/retarget.md %}) operator.
+- Animation Retargeting (planned guide): transferring animations between different armatures. See the [Retarget Actions]({% link docs/all_the_tools/retargeting/retarget.md %}) operator.
 
 ### Related Operators
 

@@ -1,14 +1,14 @@
 ---
-title: Template
+title: Load Template
 parent: Templates
 grand_parent: All The Tools
 nav_order: 1
 permalink: /all_the_tools/templates/template/
 ---
 
-# Template
+# Load Template
 
-**Template** (`mmt.template`) adds a saved template from the Mr Mannequins template library. It's at `Add > Template`, then a template, in the 3D Viewport, and in F3 Operator Search. It needs at least one `.blend` file in the add-on's `templates/library` folder. An empty library shows **No Saved Templates** in the menu and reports an error from F3.
+**Load Template** (`mmt.template`) adds a saved template from the Mr Mannequins template library. It's at `Add > Template`, then a template, in the 3D Viewport, and in F3 Operator Search. It needs at least one `.blend` file in the add-on's `templates/library` folder. An empty library shows **No Saved Templates** in the menu and reports an error from F3.
 
 The template's armatures, meshes and objects their constraints need are appended and linked into the active collection. Custom shapes stay referenced by the armature, without being linked into the scene, and repeated custom shapes, materials and images are switched to the copies already in the file. What was added ends up selected, with the last object active. **Ignore Armatures** also removes armature modifiers left without an object. It errors when the file is missing or has no armatures or meshes, and warns when everything was ignored.
 

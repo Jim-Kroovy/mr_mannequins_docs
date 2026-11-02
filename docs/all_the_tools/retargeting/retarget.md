@@ -1,14 +1,14 @@
 ---
-title: Retarget
+title: Retarget Actions
 parent: Retargeting
 grand_parent: All The Tools
 nav_order: 4
 permalink: /all_the_tools/retargeting/retarget/
 ---
 
-# Retarget
+# Retarget Actions
 
-**Retarget** (`mmt.actions`) retargets actions between the active armature and another one, in either direction. It's at `Pose > Apply` as **Retarget Actions To** and **Retarget Actions From**, and in F3 Operator Search, which uses the From direction. It needs an active armature. Nothing happens until you pick a **Target** in the redo panel.
+**Retarget Actions** (`mmt.actions`) retargets actions between the active armature and another one, in either direction. It's at `Pose > Apply` as **Retarget Actions To** and **Retarget Actions From**, and in F3 Operator Search, which uses the From direction. It needs an active armature. Nothing happens until you pick a **Target** in the redo panel.
 
 The source armature's active action and its stashed actions are each retargeted onto the receiving armature. The new action from the source's active action is made active on the receiver, and the rest are stashed. If the source had no active action, or it failed, the receiver's active action is cleared and its pose reset. An action with no bones matching the receiver is skipped. With **Keep Original** on, new actions are prefixed with the receiving armature's Original name. **Warning:** with it off, the source actions and their stash entries are deleted, and the new actions take their names. The active armature and its mode are restored, and anything hidden goes back to hidden.
 

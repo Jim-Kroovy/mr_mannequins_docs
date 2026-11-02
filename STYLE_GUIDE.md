@@ -42,6 +42,7 @@ Assume the reader already knows Blender, Unreal and 3D work. Don't explain what 
 ## Names and URLs
 
 - Page titles use the name the UI uses, in title case.
+- All The Tools operator titles use a clear action-and-object name, like **Load Template**, rather than an ambiguous single word.
 - Documentation folders, Markdown filenames and permalink segments are lowercase `snake_case`. Titles stay in normal title case.
 - Every page sets an explicit `permalink` in the form `/category/page_name/`. Operator pages use `/all_the_tools/category/operator_name/`.
 - `{% link %}` tags use the underscore source path, like `docs/all_the_tools/category/operator_name.md`.
