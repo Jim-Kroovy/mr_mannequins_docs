@@ -22,6 +22,15 @@ Assume the reader already knows Blender, Unreal and 3D work. Don't explain what 
 - Link between pages with `{% link %}` so a moved or unpublished target fails the build.
 - A page is listed under its category by title, so every title on the site must be unique.
 
+## Layout
+
+- Open with a short introductory paragraph, then use descriptive headings. `#` is the page title, `##` the main sections and `###` their subsections.
+- Workflow pages have no generic Requirements or Procedure sections. Each workflow step is its own `##` heading with its numbered steps directly under it.
+- Alternate workflow steps share a number, like 1A and 1B. Put when to use each one directly below its heading, in parenthesized italics.
+- Use compact lists for choices and related tools. Workflow pages don't use tables.
+- Keep property tables on operator pages, where exact settings need comparing side by side.
+- Typography lives in `_sass/custom/custom.scss`: system fonts, a 46em reading width, 1.5 line height and bold headings at 2em, 1.5em, 1.25em and 1.125em for `#` to `####`. It only applies to page content, and the color scheme stays dark.
+
 ## Names and URLs
 
 - Page titles use the name the UI uses, in title case.

@@ -13,20 +13,9 @@ Your skeleton doesn't need to be compatible with anything to import it. Compatib
 
 If you're importing skeletal meshes or a custom character, follow Setup Custom Character instead (planned guide).
 
-## Requirements
+## 1A. Import without a Target
 
-- One or more FBX animation files.
-
-## Procedure
-
-There are two ways in. Follow one of them, then carry on from step 3.
-
-| Route | Use it when | Steps |
-| ----- | ----------- | ----- |
-| Without a Target | Compatibility is unknown, or you just want to edit the animation. This is the safe route. | 1A, then 2 |
-| With a Target (optional) | You already know the skeleton is compatible with an armature in the file. | 1B, then 2 only if the Target has no Oriented armature |
-
-### 1A. Import without a Target
+*(Use this when compatibility is unknown, or you just want to edit the animation. This is the safe route.)*
 
 1. Open `File > Import > Mr Mannequins FBX (.fbx)`. See [Import Mr Mannequins FBX]({% link docs/all-the-tools/importing/import-mr-mannequins-fbx.md %}).
 2. Select one or more files. Files with the same bone names, hierarchy and rest poses are merged onto one armature.
@@ -34,13 +23,15 @@ There are two ways in. Follow one of them, then carry on from step 3.
 4. Optional: set **Decimate Keyframes** in the Cleaning panel if you want fewer keys to edit. It's None by default and can be slow on dense animation.
 5. Confirm the import.
 
-You get one armature named `<file>_Skeleton` for each different skeleton, with an action named after each file, stashed in the NLA.
+You get one armature named `<file>_Skeleton` for each different skeleton, with an action named after each file, stashed in the NLA. Carry on from step 2.
 
 {% include media/screenshot.html alt="Blender file browser in File > Import > Mr Mannequins FBX with two animation FBX files selected and the Retargeting panel open, Target set to None" %}
 
-### 1B. Optional: import directly onto a compatible Target
+## 1B. Optional: import directly onto a compatible Target
 
-This replaces step 1A. Only use it when you already know the skeletons are compatible, for example with a previously configured custom character or a mannequin template. Retargeting matches bones by name and through any bone mappings, and bones that don't match don't get keyed. It also works relative to rest poses, so the file's rest pose has to match the Target's. If you don't know, use step 1A.
+*(Use this when you already know the skeleton is compatible with an armature in the file.)*
+
+This replaces step 1A. A compatible armature could be a previously configured custom character or a mannequin template. Retargeting matches bones by name and through any bone mappings, and bones that don't match don't get keyed. It also works relative to rest poses, so the file's rest pose has to match the Target's. If you don't know, use step 1A.
 
 The Target has to be in the file before you import. It can be an armature from an earlier import, or one added from `Add > Template` with [Template]({% link docs/all-the-tools/templates/template.md %}).
 
@@ -60,7 +51,7 @@ If the Target has no Oriented armature, run step 2 on it before editing.
 
 {% include media/screenshot.html alt="Blender file browser in File > Import > Mr Mannequins FBX with the Retargeting panel open, a Target armature picked, Actions on, and the Cleaning panel showing Decimate Keyframes set to After" %}
 
-### 2. Create the Oriented armature
+## 2. Create the Oriented armature
 
 Armatures imported from FBX keep the source skeleton's bone directions and rolls. This step builds a second armature with matching bone names whose bones are oriented for Blender, using shortest rolls.
 
@@ -77,16 +68,14 @@ It isn't a general requirement for exporting. The export can also run on an impo
 
 The result is a pair of armatures:
 
-| Armature | Name | Role |
-| -------- | ---- | ---- |
-| Oriented | `<name>_Oriented` | The one you edit. It holds the stashed actions and sits at the top of the pair. |
-| Original | `<name>_Original` | The imported skeleton, shown as a wireframe and parented to the Oriented armature. Its bones are constrained to follow the matching Oriented bones, and it no longer holds any actions. |
+- **Oriented** (`<name>_Oriented`): the one you edit. It holds the stashed actions and sits at the top of the pair.
+- **Original** (`<name>_Original`): the imported skeleton, shown as a wireframe and parented to the Oriented armature. Its bones are constrained to follow the matching Oriented bones, and it no longer holds any actions.
 
 Both armatures finish at rest with no active action. **Max Length** only affects the Oriented armature's bones. The Original keeps the skeleton's own bones, and that's the armature that gets exported.
 
 {% include media/screenshot.html alt="Properties editor Armature tab with the Orientation panel and Create Oriented Armature button, beside a 3D Viewport showing the Oriented armature with the wireframe Original overlaid" %}
 
-### 3. Pick an action to edit
+## 3. Pick an action to edit
 
 The add-on doesn't have an operator for picking an action, so use Blender's Action Editor. Once an action is active, the add-on's action tools in step 4 work on it.
 
@@ -97,7 +86,7 @@ The add-on doesn't have an operator for picking an action, so use Blender's Acti
 
 {% include media/screenshot.html alt="3D Viewport in Pose mode on the Oriented armature, beside a Dope Sheet in Action Editor mode with an imported action picked from the action selector" %}
 
-### 4. Edit the animation
+## 4. Edit the animation
 
 1. Pose bones on the Oriented armature, and key them with Blender's usual tools.
 2. Edit timing and values in the Dope Sheet or Graph Editor.
@@ -108,18 +97,17 @@ Retargeted actions key bones in quaternion rotation, so edit those channels rath
 
 These add-on tools are optional:
 
-| Tool | Use it to |
-| ---- | --------- |
-| [Decimate Keyframes]({% link docs/all-the-tools/retargeting/decimate-keyframes.md %}) | Reduce dense keys on the selected f-curves. |
-| [Split Active Action]({% link docs/all-the-tools/keyframing/split-active-action.md %}) | Cut an action into new stashed actions by frame range. |
-| [Add Oscillatory Motion]({% link docs/all-the-tools/keyframing/add-oscillatory-motion.md %}) | Layer looping offsets onto the selected bones of the active action. |
-| [Refresh Binding Constraints]({% link docs/all-the-tools/rigging/refresh-binding-constraints.md %}) | Refresh the Original's constraints if it stops following the Oriented armature properly. |
+- [Decimate Keyframes]({% link docs/all-the-tools/retargeting/decimate-keyframes.md %}): reduces dense keys on the selected f-curves.
+- [Split Active Action]({% link docs/all-the-tools/keyframing/split-active-action.md %}): cuts an action into new stashed actions by frame range.
+- [Add Oscillatory Motion]({% link docs/all-the-tools/keyframing/add-oscillatory-motion.md %}): layers looping offsets onto the selected bones of the active action.
+- [Transfer Root Motion]({% link docs/all-the-tools/keyframing/transfer-root-motion.md %}): moves a source bone's travel along a world direction onto a target such as the root.
+- [Redirect Root Motion]({% link docs/all-the-tools/keyframing/redirect-root-motion.md %}): creates actions with root motion redirected around a chosen world axis.
 
 Edits go straight into the action you picked, and that same action is what the stash points to. There's no separate apply or transfer step. The export bakes it across to the Original in step 5.
 
 To keep your untouched source animation in Blender, duplicate the action first and edit the copy. A new action isn't in the stash, so stash it with the Action Editor or choose a different **Method** in step 5.
 
-### 5. Export
+## 5. Export
 
 1. Select the Oriented armature, in any mode. **Only Selected** is on by default, and selecting either armature in the pair finds the same export.
 2. Open `File > Export > Mr Mannequins FBX (.fbx)`. See [Export Mr Mannequins FBX]({% link docs/all-the-tools/exporting/export-mr-mannequins-fbx.md %}).
@@ -137,7 +125,7 @@ Each action is baked from the Oriented armature onto the Original, one key per f
 
 {% include media/screenshot.html alt="Blender file browser in File > Export > Mr Mannequins FBX with the Actions panel set to Only Stashed and Batch Export on, and Export off in the Meshes panel" %}
 
-### 6. Optional: import into Unreal Engine
+## 6. Optional: import into Unreal Engine
 
 This step only applies if Unreal Engine is where the animation is going.
 

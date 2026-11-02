@@ -6,4 +6,4 @@ permalink: /ultimate-workflows/
 
 # Ultimate Workflows
 
-Placeholder category page. Workflow guides will be listed below.
+Step-by-step guides that take a job from start to finish with Mr Mannequins Tools.

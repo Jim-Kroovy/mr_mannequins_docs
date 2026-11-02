@@ -1,3 +1,50 @@
+// Page text layout and fonts... (nav and search sit outside .main-content)
+.main-content {
+  max-width: 46em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: SFMono-Regular, Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
+  }
+
+  // text-delta is the theme's small Table of Contents heading...
+  h1,
+  h2:not(.text-delta),
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  // the theme's size mixins are all !important...
+  h1 {
+    font-size: 2em !important;
+  }
+
+  h2:not(.text-delta) {
+    font-size: 1.5em !important;
+  }
+
+  h3 {
+    font-size: 1.25em !important;
+  }
+
+  h4 {
+    font-size: 1.125em !important;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+}
+
 // Coming Soon nav labels...
 .nav-list .nav-list-item .nav-list-link-disabled {
   color: $grey-dk-000;
