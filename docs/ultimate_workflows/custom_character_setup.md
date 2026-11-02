@@ -52,7 +52,7 @@ Pressing the button again reads **Update Oriented Armature**, and it works diffe
 
 ## 3. Rig Custom Character
 
-This step sets up one full biped using [Add Rigging Module]({% link docs/all_the_tools/rigging/add_rigging_module.md %}). Every other option a module has will be covered by the Rapid Rigging guides (planned).
+This step sets up one full biped using [Add Rigging Module]({% link docs/all_the_tools/rigging/add_rigging_module.md %}). Every other option a module has is covered in [Rapid Rigging]({% link docs/rapid_rigging/index.md %}).
 
 1. Select the Oriented armature so it's active, then enter Pose mode.
 2. Select the bones for a module, listed below.
@@ -112,7 +112,7 @@ If the export has to go back onto an existing skeleton, the Original's hierarchy
 
 ## Limitations
 
-- **This is one biped setup.** Other module types and skeletons are for the Rapid Rigging guides (planned).
+- **This is one biped setup.** Other module types and skeletons are covered in [Rapid Rigging]({% link docs/rapid_rigging/index.md %}).
 - **Actions only come across once.** They're only retargeted onto the Oriented armature when it's created, so actions added to the Original later don't come across on an update.
 - **Don't rename, add or remove bones on the Original** if the export has to go back onto an existing skeleton. The export writes whatever bones the Original has.
 
@@ -121,7 +121,7 @@ If the export has to go back onto an existing skeleton, the Original's hierarchy
 ### Related Workflows
 
 - [Edit Existing Animation]({% link docs/ultimate_workflows/edit_existing_animation.md %}): importing, editing and exporting animation files.
-- Rapid Rigging (planned guides): creating and configuring modular animation rigs.
+- [Rapid Rigging]({% link docs/rapid_rigging/index.md %}): creating and configuring modular animation rigs.
 
 ### Related Operators
 

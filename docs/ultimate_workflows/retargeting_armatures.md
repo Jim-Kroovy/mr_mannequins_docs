@@ -99,7 +99,7 @@ This needs a Target with a Rigging armature. Modules find their bones by name, s
 
 The modules' types and settings are rebuilt on your character, and a Rigging armature is created if it doesn't have one. Mirrored modules are built again from their primary rather than being copied. Pasting adds to any modules already there. Optional roles your character doesn't have are cleared, and a module missing a bone it requires is removed, with a warning listing what couldn't be pasted.
 
-Check the module settings, controls, mirrored sides, shared bones and IK/FK behavior on the result. Other module options will be covered by the Rapid Rigging guides (planned).
+Check the module settings, controls, mirrored sides, shared bones and IK/FK behavior on the result. Other module options are covered in [Rapid Rigging]({% link docs/rapid_rigging/index.md %}).
 
 If your character has actions, retarget them onto the new controls now. They're still on the Oriented armature, and with Rigging above it the export won't find them there.
 
@@ -152,7 +152,7 @@ Import option names and other settings can vary, so check them in your version o
 
 - [Custom Character Setup]({% link docs/ultimate_workflows/custom_character_setup.md %}): importing a character, creating its Oriented armature and rigging it.
 - [Edit Existing Animation]({% link docs/ultimate_workflows/edit_existing_animation.md %}): importing, editing and exporting animation files.
-- Rapid Rigging (planned guides): creating and configuring modular animation rigs.
+- [Rapid Rigging]({% link docs/rapid_rigging/index.md %}): creating and configuring modular animation rigs.
 
 ### Related Operators
 

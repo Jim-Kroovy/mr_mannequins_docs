@@ -47,7 +47,7 @@ The Target has to be in the file before you import. It can be an armature from a
 
 The actions land on the highest tier of the Target's hierarchy and get stashed there under their file names, and the imported skeleton is removed. The last imported action is left active on that armature. If the Target already has an Oriented armature, skip step 2 and go straight to step 3 using that armature.
 
-If that hierarchy has a Rigging armature, the actions get baked onto its rigging, so working with them is outside this guide. See Rapid Rigging (planned guide).
+If that hierarchy has a Rigging armature, the actions get baked onto its rigging, so working with them is outside this guide. See [Rapid Rigging]({% link docs/rapid_rigging/index.md %}).
 
 If the Target has no Oriented armature, run step 2 on it before editing.
 
@@ -156,7 +156,7 @@ Import option names and other settings can vary, so check them in your version o
 ### Related Workflows
 
 - [Custom Character Setup]({% link docs/ultimate_workflows/custom_character_setup.md %}): preparing custom characters, including those with existing armatures and actions.
-- Rapid Rigging (planned guides): creating and configuring modular animation rigs. Start with [Add Rigging Module]({% link docs/all_the_tools/rigging/add_rigging_module.md %}).
+- [Rapid Rigging]({% link docs/rapid_rigging/index.md %}): creating and configuring modular animation rigs. Start with [Add Rigging Module]({% link docs/all_the_tools/rigging/add_rigging_module.md %}).
 - Transfer Root Motion (planned guide): transferring motion between the pelvis and root bones. See the [Transfer Root Motion]({% link docs/all_the_tools/keyframing/transfer_root_motion.md %}) operator.
 - Redirect Root Motion (planned guide): changing movement direction to create alternative animations. See the [Redirect Root Motion]({% link docs/all_the_tools/keyframing/redirect_root_motion.md %}) operator.
 - Animation Retargeting (planned guide): transferring animations between different armatures. See the [Retarget]({% link docs/all_the_tools/retargeting/retarget.md %}) operator.
