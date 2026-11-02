@@ -1,11 +1,11 @@
 ---
-title: Socket Meshes Workflow
-parent: Useful Utilities
-nav_order: 1
-permalink: /useful_utilities/socket_meshes_workflow/
+title: Making Socket Meshes
+parent: Ultimate Workflows
+nav_order: 4
+permalink: /ultimate_workflows/making_socket_meshes/
 ---
 
-# Socket Meshes Workflow
+# Making Socket Meshes
 
 Turn rigid props and armor into meshes parented to a single bone, export each one to its own FBX, then optionally attach them to a character in Unreal Engine.
 
@@ -13,7 +13,7 @@ You need a character with an Original armature first. [Custom Character Setup]({
 
 ## Video
 
-{% include media/youtube.html title="The full Socket Meshes workflow: preparing a prop mesh, weighting it to one bone on the Original armature, converting it with Socket Meshes, exporting it to its own FBX and attaching it to a Skeletal Mesh component in Unreal Engine" %}
+{% include media/youtube.html title="Making socket meshes from start to finish: preparing a prop mesh, weighting it to one bone on the Original armature, converting it with Socket Meshes, exporting it to its own FBX and attaching it to a Skeletal Mesh component in Unreal Engine" %}
 
 ## 1. Prepare Mesh Geometry
 
