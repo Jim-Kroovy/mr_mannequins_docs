@@ -100,6 +100,89 @@
   border: 1px dashed $border-color;
 }
 
+// Sidebar search... (the theme's own rules all assume a full width top bar)
+.sidebar-search {
+  display: none;
+  flex-shrink: 0;
+  width: 100%;
+  padding-bottom: $sp-2;
+
+  @include container;
+
+  &.nav-open {
+    display: block;
+  }
+
+  @include mq(md) {
+    display: block;
+  }
+
+  @include mq(lg) {
+    width: $nav-width;
+  }
+
+  .search {
+    position: relative !important;
+    width: auto !important;
+    height: $sp-7 !important;
+    padding: 0;
+    transition: none;
+  }
+
+  .search-input-wrap {
+    position: relative;
+    width: 100% !important;
+    max-width: none;
+    height: 100% !important;
+    border-radius: $border-radius;
+  }
+
+  .search-input {
+    padding-left: $sp-7;
+    background-color: $search-background-color;
+  }
+
+  .search-label {
+    padding-left: $sp-2;
+  }
+
+  // under the field, with room left to scroll on any screen height...
+  .search-results {
+    top: 100%;
+    max-height: calc(100vh - 8rem) !important;
+  }
+}
+
+// results open over the page, so the sidebar has to sit above it and the overlay...
+.search-active .side-bar {
+  z-index: 2;
+}
+
+@include mq(md) {
+  .site-header {
+    height: auto;
+    max-height: none;
+    border-bottom: 0;
+  }
+
+  .site-nav {
+    padding-top: $sp-2;
+  }
+
+  // the theme freezes the page for its top bar search...
+  .search-active .main {
+    position: relative;
+    right: auto;
+    left: auto;
+  }
+}
+
+@media print {
+  .sidebar-search {
+    display: none !important;
+  }
+}
+
 // Footer... (the theme's empty attribution slots would still take up space)
 .side-bar .site-footer,
 .main-content footer > .d-md-none {
