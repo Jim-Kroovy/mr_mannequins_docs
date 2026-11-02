@@ -25,6 +25,7 @@ Assume the reader already knows Blender, Unreal and 3D work. Don't explain what 
 ## Layout
 
 - Open with a short introductory paragraph, then use descriptive headings. `#` is the page title, `##` the main sections and `###` their subsections.
+- A workflow's Video section goes straight after its introductory description and before its first numbered step, because most readers will go to the video first.
 - Workflow pages have no generic Requirements or Procedure sections. Each workflow step is its own `##` heading with its numbered steps directly under it.
 - Alternate workflow steps share a number, like 1A and 1B. Put when to use each one directly below its heading, in parenthesized italics.
 - Use compact lists for choices and related tools. Workflow pages don't use tables.
@@ -34,7 +35,9 @@ Assume the reader already knows Blender, Unreal and 3D work. Don't explain what 
 ## Names and URLs
 
 - Page titles use the name the UI uses, in title case.
-- Every page sets an explicit `permalink` in the form `/category/page-name/`, lowercase and hyphenated. Operator pages use `/all-the-tools/category/operator-name/`.
+- Documentation folders, Markdown filenames and permalink segments are lowercase `snake_case`. Titles stay in normal title case.
+- Every page sets an explicit `permalink` in the form `/category/page_name/`. Operator pages use `/all_the_tools/category/operator_name/`.
+- `{% link %}` tags use the underscore source path, like `docs/all_the_tools/category/operator_name.md`.
 - Don't change a published permalink. Links and search results out in the wild depend on it.
 
 ## Media

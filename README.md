@@ -33,8 +33,10 @@ In PowerShell, run `$env:JEKYLL_ENV = "production"` first and leave it off the b
    - `parent`: the exact title of the parent page. Top-level categories have no parent.
    - `grand_parent`: the exact title of the parent's parent, on third level pages like operators.
    - `nav_order`: the position among the page's siblings.
-   - `permalink`: the stable public URL, such as `/all-the-tools/category-name/operator-name/`.
+   - `permalink`: the stable public URL, such as `/all_the_tools/category_name/operator_name/`.
 3. Replace the template text. Remove any links to pages that don't exist yet, because they fail the build.
+
+Folders, Markdown filenames and permalink segments are lowercase `snake_case`, and `{% link %}` tags use those same underscore paths. Titles stay in normal title case, and a published permalink stays stable.
 
 ## Coming Soon categories
 
@@ -49,7 +51,7 @@ This is handled by `_plugins/coming_soon.rb` and one branch in `_includes/compon
 Internal links use the source path, which adds the `baseurl` and fails the build if the target is missing:
 
 ```liquid
-[Operator Name]({% link docs/all-the-tools/category-name/operator-name.md %})
+[Operator Name]({% link docs/all_the_tools/category_name/operator_name.md %})
 ```
 
 Put images in `assets/images`, and pass paths without a leading slash:

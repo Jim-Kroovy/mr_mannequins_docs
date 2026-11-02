@@ -9,5 +9,5 @@ permalink: /
 
 Placeholder home page. The documentation hasn't been written yet.
 
-- [Ultimate Workflows]({% link docs/ultimate-workflows/index.md %})
-- [All The Tools]({% link docs/all-the-tools/index.md %})
+- [Ultimate Workflows]({% link docs/ultimate_workflows/index.md %})
+- [All The Tools]({% link docs/all_the_tools/index.md %})
