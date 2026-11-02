@@ -8,66 +8,14 @@ permalink: /all_the_tools/rigging/custom_shapes/
 
 # Custom Shapes
 
-**Operator:** `mmt.shapes`  
-**Label:** Custom Shapes
+**Custom Shapes** (`mmt.shapes`) saves or loads custom bone shapes. Saving is stored from mesh evaluations and only supports sharp edges. It's at `Object > Save Custom Shape` and `Object > Load Custom Shape`, and in F3 Operator Search, which uses the Save mode.
 
-Saves or loads custom bone shapes. Saving is stored from mesh evaluations and only supports sharp edges.
+**Save** needs selected mesh objects. Each one is written to a `.py` file in the add-on's `rigging/shapes` folder, named from the mesh in lowercase, and modifiers are included because the evaluated mesh gets stored. Only vertices, edges, faces and sharp edge flags are stored. Saved shapes then appear in every shape picker in the add-on. **Warning:** saving overwrites a shape file with the same name. If the shapes folder isn't writable, saving quietly does nothing.
 
-## Location
+**Load** needs nothing, and links into the active object's collections, or the scene collection when nothing is active. The shape object is created if it isn't in the file already. A shape that's already in a collection isn't linked twice, and picking None does nothing.
 
-- `Object > Save Custom Shape`
-- `Object > Load Custom Shape`
-- F3 Operator Search, which uses the Save mode
-
-## Requirements
-
-- **Save:** selected mesh objects.
-- **Load:** nothing, it links into the active object's collections, or the scene collection when nothing is active.
-
-## Usage
-
-1. For saving, select the meshes and choose **Save Custom Shape**.
-2. For loading, choose **Load Custom Shape** and pick a **Shape** in the redo panel.
-
-## Result
-
-- **Save:** each selected mesh is written to a `.py` file in the add-on's `rigging/shapes` folder, named from the mesh in lowercase. Modifiers are included because the evaluated mesh gets stored.
-- **Load:** the shape object is created if it isn't in the file already, and linked into the collections. A shape that's already in a collection isn't linked twice, and picking None does nothing.
-- Saved shapes then appear in every shape picker in the add-on.
-
-## Properties
-
-### Redo panel, Save
-
-| Setting | Type | Default | Range or choices | Description |
-| ------- | ---- | ------- | ---------------- | ----------- |
-| Only Active<br>`active` | Checkbox | On |  | Only save the active mesh as a custom shape.<br>*Save mode. Shown, but see Limitations.* |
-
-### Redo panel, Load
-
-| Setting | Type | Default | Range or choices | Description |
-| ------- | ---- | ------- | ---------------- | ----------- |
-| Shape<br>`shape` | Choice | First item (None) | Dynamic list | The custom shape to load.<br>*Load mode. The list is every `.py` file in `rigging/shapes`.* |
-
-## Variants
-
-### Mode
-
-- `SAVE` is **Save Custom Shape**.
-- `LOAD` is **Load Custom Shape**.
-
-## Limitations
-
-- **Only Active** has no effect. Save always writes every selected mesh.
-- **Warning:** saving overwrites a shape file with the same name.
-- If the shapes folder isn't writable, saving quietly does nothing.
-- Only vertices, edges, faces and sharp edge flags are stored.
-
-## Related Operators
-
-- [Set Oriented Armature]({% link docs/all_the_tools/orientation/set_oriented_armature.md %}): Picks from these shapes for its bones.
-- [Add Rigging Module]({% link docs/all_the_tools/rigging/add_rigging_module.md %}): Builds modules that use these shapes in their Shapes settings.
-
-## Related Documentation
-
-- Planned: the Rapid Rigging module guides.
+- **Mode** (`mode`) — Choice; default Save. What are we doing to a custom shapes. Set by the menu entry.
+  - **Save** (`SAVE`): This is **Save Custom Shape**.
+  - **Load** (`LOAD`): This is **Load Custom Shape**.
+- **Only Active** (`active`) — Checkbox; default On. Only save the active mesh as a custom shape. Save mode only. Shown, but it has no effect, since Save always writes every selected mesh.
+- **Shape** (`shape`) — Choice; default first item (None); dynamic list. The custom shape to load. Load mode only. The list is every `.py` file in `rigging/shapes`.

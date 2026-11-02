@@ -8,114 +8,54 @@ permalink: /all_the_tools/exporting/export_mr_mannequins_fbx/
 
 # Export Mr Mannequins FBX
 
-**Operator:** `mmt.export`  
-**Label:** Mr Mannequins FBX
+**Mr Mannequins FBX** (`mmt.export`) exports armatures and meshes as compatible FBX files, with baked actions, batching and optional cleanup of prefixed data. It's at `File > Export > Mr Mannequins FBX (.fbx)` and in F3 Operator Search. Pick a folder in the file browser, set the panels and confirm. The Cleaning and Advanced panels are collapsed by default.
 
-Exports armatures and meshes as compatible FBX files, with baked actions, batching and optional cleanup of prefixed data.
+There's no `poll()` check, but with **Only Selected** on, something exportable has to be selected for anything to be written. Selecting a mesh also pulls in its armature. Actions come from the highest tier in the armature's hierarchy, and the export armature is the Original when there is one, otherwise the Oriented.
 
-## Location
+FBX files go into the chosen folder, or into the **Folder** subfolder set for meshes or actions, which is created when it doesn't exist. Only the folder from the file browser is used, because every file name comes from the asset being exported. Any run of non alphanumeric characters in a file name becomes an underscore. Batched meshes use the mesh name, and socket meshes add `_<bone>` when **Socket Suffices** is on. Unbatched skeletal meshes write `<armature>_Meshes.fbx`, unbatched static meshes write `<blend file>_Meshes.fbx` (or `Static_Meshes.fbx` in an unsaved file), batched actions use the action name, and unbatched actions are merged into `<armature>_Actions.fbx` as separate FBX animation stacks. Static and socket meshes have their object transforms cleared first, so they export from the origin.
 
-- `File > Export > Mr Mannequins FBX (.fbx)`
-- F3 Operator Search
+With **Background Export** on, the export runs on a temporary copy of the file in a background Blender process and the open file isn't changed. A failed background export reports Blender's error output and cancels. **Warning:** with it off, the export runs on the open file. It changes the scene unit scale and length unit, applies modifiers, unhides objects and scales the armature, and only restores the selection and mode afterwards. **Warning:** Cleaning removes data from the exported copy only when **Background Export** is on. With it off, the open file loses that data too.
 
-## Requirements
+Cleaning runs last on each mesh set, right before export, so prefixed data can still feed modifiers. It doesn't run if the prefix is empty, even with its checkboxes on. The Meshes, Actions, Cleaning and Advanced settings are remembered between exports and sessions, including when an export fails, and are reset when the add-on version changes. **Only Selected** and **Background Export** aren't part of that saved group. The default **Only Stashed** method exports what [Split Active Action]({% link docs/all_the_tools/keyframing/split_active_action.md %}) and other stashing tools leave in the NLA.
 
-- No `poll()` check. With **Only Selected** on, something exportable has to be selected for anything to be written.
-
-## Usage
-
-1. Select what you want to export, or turn off **Only Selected** in the Advanced panel.
-2. Open the operator and pick a folder in the file browser.
-3. Set the Meshes, Actions, Cleaning and Advanced panels.
-4. Confirm the export.
-
-{% include media/screenshot.html alt="File browser in File > Export > Mr Mannequins FBX, with the Meshes and Actions panels expanded in the right hand sidebar." %}
-
-## Result
-
-- FBX files are written into the chosen folder, or into the **Folder** subfolder set for meshes or actions. Subfolders are created when they don't exist.
-- Only the folder from the file browser is used. Every file name comes from the asset being exported.
-- File names have any run of non alphanumeric characters replaced with an underscore. Batched meshes use the mesh name, and socket meshes add `_<bone>` when **Socket Suffices** is on. Unbatched skeletal meshes write `<armature>_Meshes.fbx`, unbatched static meshes write `<blend file>_Meshes.fbx` (or `Static_Meshes.fbx` in an unsaved file), batched actions use the action name, and unbatched actions write `<armature>_Actions.fbx`.
-- Unbatched actions are merged into one file as separate FBX animation stacks.
-- With **Background Export** on, the export runs on a temporary copy of the file in a background Blender process, and the open file isn't changed.
-
-## Properties
-
-### Meshes panel
-
-| Setting | Type | Default | Range or choices | Description |
-| ------- | ---- | ------- | ---------------- | ----------- |
-| Export<br>`export` | Checkbox | On |  | Export meshes.<br>*Panel header checkbox.* |
-| Folder<br>`folder` | Text | Empty |  | The folder in the export directory to export meshes to.<br>*Meshes Export on.* |
-| Apply Modifiers<br>`modifiers` | Checkbox | On |  | Apply modifiers non-destructively before export (supports shape keys).<br>*Meshes Export on.* |
-| Batch Export<br>`batch` | Checkbox | On |  | Batch export meshes to individual files (socket meshes always batch export)<br>*Meshes Export on.* |
-| Socket Suffices<br>`suffix` | Checkbox | On |  | Add socket bone name as a suffix to the exported file (only for socket meshes).<br>*Meshes Export on.* |
-| Static Meshes<br>`static` | Checkbox | On |  | Export static meshes.<br>*Meshes Export on.* |
-| Skeletal Meshes<br>`skeletal` | Checkbox | On |  | Export skeletal meshes.<br>*Meshes Export on.* |
-| Socket Meshes<br>`socket` | Checkbox | On |  | Export socket meshes.<br>*Meshes Export on.* |
-
-### Actions panel
-
-| Setting | Type | Default | Range or choices | Description |
-| ------- | ---- | ------- | ---------------- | ----------- |
-| Export<br>`export` | Checkbox | On |  | Export actions.<br>*Panel header checkbox.* |
-| Folder<br>`folder` | Text | Empty |  | The folder in the export directory to export these actions to.<br>*Actions Export on.* |
-| Method<br>`method` | Choice | Only Stashed | **Only Active**: Export only the active action on armatures<br>**Only Stashed**: Export only the stashed actions on armatures<br>**All Actions**: Export all actions that the armature can use | Which actions on the armature get exported.<br>*Actions Export on.* |
-| Batch Export<br>`batch` | Checkbox | On |  | Batch export baked actions to individual files, otherwise merge them into one file as separate FBX animation stacks.<br>*Actions Export on.* |
-
-### Cleaning panel
-
-| Setting | Type | Default | Range or choices | Description |
-| ------- | ---- | ------- | ---------------- | ----------- |
-| Prefix<br>`prefix` | Text | Empty |  | Only clean data that starts with this prefix.<br>*Collapsed by default. Cleaning only runs when this isn't empty.* |
-| Shape Keys<br>`shapes` | Checkbox | Off |  | Remove shape keys that start with the prefix. |
-| Vertex Groups<br>`groups` | Checkbox | Off |  | Remove vertex groups that start with the prefix. |
-| Materials<br>`materials` | Checkbox | Off |  | Remove material slots that start with the prefix. |
-
-### Advanced panel
-
-| Setting | Type | Default | Range or choices | Description |
-| ------- | ---- | ------- | ---------------- | ----------- |
-| Scale<br>`scaling` | Float | 1 | Min 0.001, Max 1000 | Scale all data.<br>*Collapsed by default.* |
-| Forward<br>`forward` | Choice | -Z Forward | **X Forward**<br>**Y Forward**<br>**Z Forward**<br>**-X Forward**<br>**-Y Forward**<br>**-Z Forward** | Forward axis. |
-| Up<br>`upward` | Choice | Y Up | **X Up**<br>**Y Up**<br>**Z Up**<br>**-X Up**<br>**-Y Up**<br>**-Z Up** | Up axis. |
-| Smoothing<br>`smoothing` | Choice | Face | **Normals Only**: Export only normals instead of writing edge or face smoothing data<br>**Face**: Write face smoothing<br>**Edge**: Write edge smoothing | Export smoothing information. |
-| Vertex Colors<br>`colors` | Choice | sRGB | **None**: Do not export color attributes<br>**sRGB**: Export colors in sRGB color space<br>**Linear**: Export colors in linear color space | Export vertex color attributes. |
-| Prioritize Active Color<br>`prioritize` | Checkbox | Off |  | Make sure the active color will be exported first (unless 'None' is chosen for Vertex Colors).<br>*Vertex Colors isn't None.* |
-| Loose Edges<br>`edges` | Checkbox | Off |  | Export loose edges (as two-vertices polygons). |
-| Tangent Space<br>`tangents` | Checkbox | Off |  | Add binormal and tangent vectors, together with normal they form the tangent space (will only work correctly with tris/quads only meshes). |
-| Triangulate Faces<br>`triangles` | Checkbox | Off |  | Convert all faces to triangles. |
-| Primary Bone Axis<br>`primary` | Choice | Y Axis | **X Axis**<br>**Y Axis**<br>**Z Axis**<br>**-X Axis**<br>**-Y Axis**<br>**-Z Axis** | Primary bone axis. |
-| Secondary Bone Axis<br>`secondary` | Choice | X Axis | **X Axis**<br>**Y Axis**<br>**Z Axis**<br>**-X Axis**<br>**-Y Axis**<br>**-Z Axis** | Secondary bone axis. |
-| Sampling Rate<br>`step` | Float | 1 | Min 0.01, Max 100 | How often to evaluate animated values (in frames). |
-| Simplify<br>`simplify` | Float | 0 | Min 0, Max 100 | How much to simplify baked values (0.0 to disable, the higher the more simplified). |
-| Metadata<br>`use_metadata` | Checkbox | On |  | Export metadata (creator, ...). |
-
-### Advanced panel, operator settings
-
-| Setting | Type | Default | Range or choices | Description |
-| ------- | ---- | ------- | ---------------- | ----------- |
-| Only Selected<br>`only_selected` | Checkbox | On |  | Only include selected meshes and armatures.<br>*Collapsed by default. Changing it rescans the export assets.* |
-| Background Export<br>`background` | Checkbox | On |  | Run the export in a background process so the open file stays untouched. Only turn this off for debugging. |
-
-## Limitations
-
-- The Meshes, Actions, Cleaning and Advanced settings are remembered between exports and sessions, including when an export fails. They're reset when the add-on version changes. **Only Selected** and **Background Export** aren't part of that saved group.
-- Selecting a mesh also pulls in its armature. Actions come from the highest tier in the armature's hierarchy, and the export armature is the Original when there is one, otherwise the Oriented.
-- **Warning:** with **Background Export** off, the export runs on the open file. It changes the scene unit scale and length unit, applies modifiers, unhides objects and scales the armature, and only restores the selection and mode afterwards.
-- **Warning:** Cleaning removes data from the exported copy only when **Background Export** is on. With it off, the open file loses that data too.
-- Static and socket meshes have their object transforms cleared before export, so they export from the origin.
-- Cleaning runs last on each mesh set, right before export, so prefixed data can still feed modifiers. It doesn't run if the prefix is empty, even with its checkboxes on.
-- A failed background export reports Blender's error output and cancels.
-
-## Related Operators
-
-- [Import Mr Mannequins FBX]({% link docs/all_the_tools/importing/import_mr_mannequins_fbx.md %}): The matching FBX import.
-- [Apply Meshes]({% link docs/all_the_tools/utilities/apply_meshes.md %}): The same modifier handling that **Apply Modifiers** uses here.
-- [Clean Meshes]({% link docs/all_the_tools/utilities/clean_meshes.md %}): The same prefix cleanup as the Cleaning panel, run directly on the open file.
-- [Socket Meshes]({% link docs/all_the_tools/skinning/socket_meshes.md %}): Makes the socket meshes this exports.
-- [Split Active Action]({% link docs/all_the_tools/keyframing/split_active_action.md %}): Stashes actions, which is what the default **Only Stashed** method exports.
-
-## Related Documentation
-
-- Planned: an Ultimate Workflows guide covering this operator.
+- **Meshes > Export** (`export`) — Checkbox; default On. Export meshes. Panel header checkbox.
+- **Meshes > Folder** (`folder`) — Text; default empty. The folder in the export directory to export meshes to. Available when Meshes Export is on.
+- **Meshes > Apply Modifiers** (`modifiers`) — Checkbox; default On. Apply modifiers non-destructively before export (supports shape keys). Available when Meshes Export is on.
+- **Meshes > Batch Export** (`batch`) — Checkbox; default On. Batch export meshes to individual files (socket meshes always batch export). Available when Meshes Export is on.
+- **Meshes > Socket Suffices** (`suffix`) — Checkbox; default On. Add socket bone name as a suffix to the exported file (only for socket meshes). Available when Meshes Export is on.
+- **Meshes > Static Meshes** (`static`) — Checkbox; default On. Export static meshes. Available when Meshes Export is on.
+- **Meshes > Skeletal Meshes** (`skeletal`) — Checkbox; default On. Export skeletal meshes. Available when Meshes Export is on.
+- **Meshes > Socket Meshes** (`socket`) — Checkbox; default On. Export socket meshes. Available when Meshes Export is on.
+- **Actions > Export** (`export`) — Checkbox; default On. Export actions. Panel header checkbox.
+- **Actions > Folder** (`folder`) — Text; default empty. The folder in the export directory to export these actions to. Available when Actions Export is on.
+- **Actions > Method** (`method`) — Choice; default Only Stashed. Which actions on the armature get exported. Available when Actions Export is on.
+  - **Only Active**: Export only the active action on armatures
+  - **Only Stashed**: Export only the stashed actions on armatures
+  - **All Actions**: Export all actions that the armature can use
+- **Actions > Batch Export** (`batch`) — Checkbox; default On. Batch export baked actions to individual files, otherwise merge them into one file as separate FBX animation stacks. Available when Actions Export is on.
+- **Cleaning > Prefix** (`prefix`) — Text; default empty. Only clean data that starts with this prefix. Cleaning only runs when this isn't empty.
+- **Cleaning > Shape Keys** (`shapes`) — Checkbox; default Off. Remove shape keys that start with the prefix.
+- **Cleaning > Vertex Groups** (`groups`) — Checkbox; default Off. Remove vertex groups that start with the prefix.
+- **Cleaning > Materials** (`materials`) — Checkbox; default Off. Remove material slots that start with the prefix.
+- **Advanced > Scale** (`scaling`) — Float; default 1; min 0.001, max 1000. Scale all data.
+- **Advanced > Forward** (`forward`) — Choice; default -Z Forward; options **X Forward**, **Y Forward**, **Z Forward**, **-X Forward**, **-Y Forward**, **-Z Forward**. Forward axis.
+- **Advanced > Up** (`upward`) — Choice; default Y Up; options **X Up**, **Y Up**, **Z Up**, **-X Up**, **-Y Up**, **-Z Up**. Up axis.
+- **Advanced > Smoothing** (`smoothing`) — Choice; default Face. Export smoothing information.
+  - **Normals Only**: Export only normals instead of writing edge or face smoothing data
+  - **Face**: Write face smoothing
+  - **Edge**: Write edge smoothing
+- **Advanced > Vertex Colors** (`colors`) — Choice; default sRGB. Export vertex color attributes.
+  - **None**: Do not export color attributes
+  - **sRGB**: Export colors in sRGB color space
+  - **Linear**: Export colors in linear color space
+- **Advanced > Prioritize Active Color** (`prioritize`) — Checkbox; default Off. Make sure the active color will be exported first (unless 'None' is chosen for Vertex Colors). Available when Vertex Colors isn't None.
+- **Advanced > Loose Edges** (`edges`) — Checkbox; default Off. Export loose edges (as two-vertices polygons).
+- **Advanced > Tangent Space** (`tangents`) — Checkbox; default Off. Add binormal and tangent vectors, together with normal they form the tangent space (will only work correctly with tris/quads only meshes).
+- **Advanced > Triangulate Faces** (`triangles`) — Checkbox; default Off. Convert all faces to triangles.
+- **Advanced > Primary Bone Axis** (`primary`) — Choice; default Y Axis; options **X Axis**, **Y Axis**, **Z Axis**, **-X Axis**, **-Y Axis**, **-Z Axis**. Primary bone axis.
+- **Advanced > Secondary Bone Axis** (`secondary`) — Choice; default X Axis; options **X Axis**, **Y Axis**, **Z Axis**, **-X Axis**, **-Y Axis**, **-Z Axis**. Secondary bone axis.
+- **Advanced > Sampling Rate** (`step`) — Float; default 1; min 0.01, max 100. How often to evaluate animated values (in frames).
+- **Advanced > Simplify** (`simplify`) — Float; default 0; min 0, max 100. How much to simplify baked values (0.0 to disable, the higher the more simplified).
+- **Advanced > Metadata** (`use_metadata`) — Checkbox; default On. Export metadata (creator, ...).
+- **Advanced > Only Selected** (`only_selected`) — Checkbox; default On. Only include selected meshes and armatures. Changing it rescans the export assets.
+- **Advanced > Background Export** (`background`) — Checkbox; default On. Run the export in a background process so the open file stays untouched. Only turn this off for debugging.

@@ -8,49 +8,6 @@ permalink: /all_the_tools/retargeting/remove_mapping/
 
 # Remove Mapping
 
-**Operator:** `mmt.remove_mapping`  
-**Label:** Remove Mapping
+**Remove Mapping** (`mmt.remove_mapping`) removes an alternate name from the active bone's retargeting mapping, and copies the bone's retargeting settings across the Original, Oriented and Rigging tiers. It's the **X** on a mapping row at `3D Viewport > Sidebar > Item > Retargeting` and `Properties > Bone > Retargeting`, and it's in F3 Operator Search. It needs an active pose bone and an active armature in an Oriented hierarchy, and the panels themselves only show in Pose mode. From F3 it uses the default index, so it targets the first row. Use the row buttons when you can.
 
-Removes an alternate name from the active bone's retargeting mapping.
-
-## Location
-
-- `3D Viewport > Sidebar > Item > Retargeting`, the **X** on a mapping row
-- `Properties > Bone > Retargeting`, the **X** on a mapping row
-- F3 Operator Search
-
-## Requirements
-
-- An active pose bone.
-- An active armature in an Oriented hierarchy. The panels themselves only show in Pose mode.
-
-## Usage
-
-1. Make the bone active in Pose mode.
-2. Press **X** on the mapping row to remove.
-
-## Result
-
-- The row is removed, and the bone's retargeting settings are copied across the Original, Oriented and Rigging tiers.
-
-## Properties
-
-### Button value
-
-| Setting | Type | Default | Range or choices | Description |
-| ------- | ---- | ------- | ---------------- | ----------- |
-| index<br>`index` | Integer | 0 | Unbounded | The mapping row to remove.<br>*Set by the row's X button.* |
-
-## Limitations
-
-- From F3 it uses the default index, so it targets the first row. Use the row buttons when you can.
-
-## Related Operators
-
-- [Add Mapping]({% link docs/all_the_tools/retargeting/add_mapping.md %}): Adds the rows this removes.
-- [Retarget Pose]({% link docs/all_the_tools/retargeting/retarget_pose.md %}): Resolves differently named bones through these mappings.
-- [Retarget]({% link docs/all_the_tools/retargeting/retarget.md %}): Resolves differently named bones through these mappings.
-
-## Related Documentation
-
-- Planned: an Ultimate Workflows guide covering this operator.
+- **index** (`index`) — Integer; default 0; unbounded. The mapping row to remove. Set by the row's X button.

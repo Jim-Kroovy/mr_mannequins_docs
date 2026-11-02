@@ -12,7 +12,7 @@ Assume the reader already knows Blender, Unreal and 3D work. Don't explain what 
 - Use the exact names from the UI and source. Check them against `mr_mannequins_tools` rather than going from memory.
 - Only document behaviour the source supports. If it's unclear, test it or leave it out.
 - No marketing, filler or repetition.
-- Write limitations plainly and put them in the Limitations section, not buried in a procedure.
+- Write limitations plainly and put them in the Limitations section, not buried in a procedure. On operator pages they go in the introductory prose.
 
 ## Pages
 
@@ -29,7 +29,14 @@ Assume the reader already knows Blender, Unreal and 3D work. Don't explain what 
 - Workflow pages have no generic Requirements or Procedure sections. Each workflow step is its own `##` heading with its numbered steps directly under it.
 - Alternate workflow steps share a number, like 1A and 1B. Put when to use each one directly below its heading, in parenthesized italics.
 - Use compact lists for choices and related tools. Workflow pages don't use tables.
-- Keep property tables on operator pages, where exact settings need comparing side by side.
+- Operator pages are flat: the `#` title, prose describing the operator, then a bullet list of its parameters. They have no subheadings, tables or media.
+- Essential prerequisites, results, warnings and the operator's `bl_idname`, label and location live in that introductory prose, not in bold pseudo-headings or metadata bullets.
+- Every bullet after the prose is a parameter, or a value set by a menu entry or button. Prefix a panel or group like `Meshes > Socket Suffices` where it helps, and indent choices or row fields under their parameter. An operator with no parameters ends after its prose. Write each one like this:
+
+  ```markdown
+  - **UI Name** (`identifier`) — Type; default and range or options. Description, then when it's available.
+  ```
+
 - Typography lives in `_sass/custom/custom.scss`: system fonts, a 46em reading width, 1.5 line height and bold headings at 2em, 1.5em, 1.25em and 1.125em for `#` to `####`. It only applies to page content, and the color scheme stays dark.
 
 ## Names and URLs

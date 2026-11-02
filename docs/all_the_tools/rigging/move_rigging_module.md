@@ -8,47 +8,6 @@ permalink: /all_the_tools/rigging/move_rigging_module/
 
 # Move Rigging Module
 
-**Operator:** `mmt.move`  
-**Label:** Move Rigging Module
+**Move Rigging Module** (`mmt.move`) moves the selected rigging module up or down in the list by one place, and it stays active. Nothing happens at the end of the list. It's the up and down arrow buttons at `Properties > Armature > Rigging Modules`, and it's in F3 Operator Search. It needs an active, selected Oriented or Rigging armature in Pose mode, with a Rigging armature and a valid active module.
 
-Moves the selected rigging module up or down in the list.
-
-## Location
-
-- `Properties > Armature > Rigging Modules`, the up and down arrow buttons
-- F3 Operator Search
-
-## Requirements
-
-- An active, selected Oriented or Rigging armature in Pose mode, with a Rigging armature and a valid active module.
-
-## Usage
-
-1. Pick the module in the list.
-2. Press the up or down arrow.
-
-## Result
-
-- The module moves one place and stays active.
-
-## Properties
-
-### Set by the button
-
-| Setting | Type | Default | Range or choices | Description |
-| ------- | ---- | ------- | ---------------- | ----------- |
-| Direction<br>`direction` | Choice | Up | **Up**<br>**Down** | Which way to move the selected module.<br>*Set by the arrow buttons. The redo panel also shows it.* |
-
-## Limitations
-
-- Nothing happens at the end of the list.
-
-## Related Operators
-
-- [Add Rigging Module]({% link docs/all_the_tools/rigging/add_rigging_module.md %}): Adds modules to the list.
-- [Remove Rigging Module]({% link docs/all_the_tools/rigging/remove_rigging_module.md %}): Removes modules from the list.
-- [Rebuild Rigging]({% link docs/all_the_tools/rigging/rebuild_rigging.md %}): Rebuilds modules in list order.
-
-## Related Documentation
-
-- Planned: the Rapid Rigging module guides.
+- **Direction** (`direction`) — Choice; default Up; options **Up**, **Down**. Which way to move the selected module. Set by the arrow buttons. The redo panel also shows it.

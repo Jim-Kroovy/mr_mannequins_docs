@@ -1,0 +1,49 @@
+# Footer text and social links... an icon only shows once its url is a full http(s) address.
+#
+# Icons live in assets/branding/social/, unchanged from their sources:
+# - Simple Icons 16.36.0 (CC0-1.0, npm simple-icons): everything not listed below.
+# - superhive.svg: safari-pinned-tab.svg from assets.superhivemarket.com/site_assets/images/favicon/.
+#   Simple Icons has no entry, and the brand package at superhivemarket.com/page/branding-assets is the older Blender Market artwork.
+# - linkedin.svg: svgs/brands/linkedin.svg from Font Awesome Free 7.3.1 (CC BY 4.0, npm @fortawesome/fontawesome-free), attribution is inside the file.
+#   Simple Icons dropped it, and LinkedIn's own downloads only come as PNG.
+# Brand marks stay the property of their owners.
+
+creator: Created by Jim Kroovy
+
+links:
+  - name: GitHub
+    icon: github.svg
+    url: "https://github.com/Jim-Kroovy/mr_mannequins_tools"
+  - name: Discord
+    icon: discord.svg
+    url: "https://discord.gg/wkPZJaH"
+  - name: Gumroad
+    icon: gumroad.svg
+    url: "https://jimkroovy.gumroad.com"
+  - name: Patreon
+    icon: patreon.svg
+    url: "https://www.patreon.com/JimKroovy"
+  - name: Superhive
+    icon: superhive.svg
+    url: "https://superhivemarket.com/creators/jim-kroovy"
+  - name: LinkedIn
+    icon: linkedin.svg
+    url: "https://www.linkedin.com/in/jim-kroovy-94271b19a"
+  - name: YouTube
+    icon: youtube.svg
+    url: "https://www.youtube.com/@JimKroovy"
+  - name: X
+    icon: x.svg
+    url: "https://x.com/JimKroovy"
+  - name: Reddit
+    icon: reddit.svg
+    url: "https://www.reddit.com/user/JimKroovy"
+  - name: Instagram
+    icon: instagram.svg
+    url: "https://www.instagram.com/jimkroovy"
+  - name: Facebook
+    icon: facebook.svg
+    url: "https://www.facebook.com/JimKroovy"
+  - name: TikTok
+    icon: tiktok.svg
+    url: "https://www.tiktok.com/@jim.kroovy"

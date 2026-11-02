@@ -99,3 +99,97 @@
   text-align: center;
   border: 1px dashed $border-color;
 }
+
+// Footer... (the theme's empty attribution slots would still take up space)
+.side-bar .site-footer,
+.main-content footer > .d-md-none {
+  display: none !important;
+}
+
+// keeps it at the bottom of short pages, narrow layouts just end with it...
+@include mq(md) {
+  .main,
+  .main-content-wrap,
+  .main-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main {
+    min-height: 100vh;
+  }
+
+  .main-content-wrap,
+  .main-content {
+    flex: 1 0 auto;
+  }
+
+  .main-content footer {
+    margin-top: auto;
+  }
+}
+
+.site-credit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-2 $sp-4;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  font-size: 0.85em;
+  color: $grey-dk-000;
+
+  p {
+    margin: 0;
+  }
+}
+
+// six icons to a row, so all twelve fit on two...
+.main-content .site-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-1;
+  justify-content: flex-end;
+  max-width: 13.25rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.main-content .site-social-link {
+  display: flex;
+  width: $sp-6;
+  height: $sp-6;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius;
+
+  img {
+    object-fit: contain;
+    opacity: 0.7;
+    filter: brightness(0) invert(1);
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: rgba($white, 0.1);
+
+    img {
+      opacity: 1;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $link-color;
+    outline-offset: 2px;
+  }
+}

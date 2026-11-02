@@ -4,15 +4,17 @@ Maintainer record of which operators are documented under All The Tools, and why
 
 - Source: `mr_mannequins_tools` working tree at version 5.0.21, Git HEAD `5c1c90f`, including uncommitted changes and the untracked `keyframing` package.
 - Audit date: 2026-11-01. RNA values checked in Blender 5.0.0.
-- Inclusion rule: registered, not `INTERNAL`, and reachable from a menu, panel, button, shortcut or F3 Operator Search.
+- Inclusion rule: registered, not `INTERNAL`, and reachable from a menu, panel, button, shortcut or F3 Operator Search, unless it's listed under Public operators left unpublished.
 
 | Count | |
 | ----- | - |
 | Discovered operator classes | 31 |
-| Published | 30 |
-| Excluded | 1 |
+| Registered and public | 30 |
+| Published | 29 |
+| Public but unpublished | 1 |
+| Internal, excluded | 1 |
 
-The baseline count of 31 classes (30 public, 1 internal) still holds, and no operator differs from the baseline list.
+The baseline count of 31 classes (30 public, 1 internal) still holds, and no operator differs from the baseline list. One of the 30 public operators is deliberately unpublished, see below.
 
 ## Included operators
 
@@ -23,7 +25,6 @@ The baseline count of 31 classes (30 public, 1 internal) still holds, and no ope
 | Exporting | `exporting/_operators.py` `MMT_OT_Export` | `mmt.export` | Mr Mannequins FBX | `File > Export > Mr Mannequins FBX (.fbx)`; F3 Operator Search | Public | `/all_the_tools/exporting/export_mr_mannequins_fbx/` |
 | Importing | `importing/_operators.py` `MMT_OT_Import` | `mmt.import` | Mr Mannequins FBX | `File > Import > Mr Mannequins FBX (.fbx)`; F3 Operator Search | Public | `/all_the_tools/importing/import_mr_mannequins_fbx/` |
 | Keyframing | `keyframing/_operators.py` `MMT_OT_GenerateLoops` | `mmt.generate_loops` | Add Oscillatory Motion | `Pose > Apply > Add Oscillatory Motion`; F3 Operator Search | Public | `/all_the_tools/keyframing/add_oscillatory_motion/` |
-| Keyframing | `keyframing/_operators.py` `MMT_OT_GenerateLocomotion` | `mmt.generate_locomotion` | Generate Locomotion | **F3 Operator Search** only. It isn't in a menu or panel. | Public | `/all_the_tools/keyframing/generate_locomotion/` |
 | Keyframing | `keyframing/_operators.py` `MMT_OT_RedirectMotion` | `mmt.redirect_motion` | Redirect Root Motion | `Pose > Apply > Redirect Root Motion`; F3 Operator Search | Public | `/all_the_tools/keyframing/redirect_root_motion/` |
 | Keyframing | `keyframing/_operators.py` `MMT_OT_SplitAction` | `mmt.split_action` | Split Active Action | `Pose > Apply > Split Active Action`; F3 Operator Search, which also works in Object mode | Public | `/all_the_tools/keyframing/split_active_action/` |
 | Keyframing | `keyframing/_operators.py` `MMT_OT_TransferMotion` | `mmt.transfer_motion` | Transfer Root Motion | `Pose > Apply > Transfer Root Motion`; F3 Operator Search | Public | `/all_the_tools/keyframing/transfer_root_motion/` |
@@ -51,6 +52,14 @@ The baseline count of 31 classes (30 public, 1 internal) still holds, and no ope
 | Utilities | `utilities/_operators.py` `MMT_OT_Apply` | `mmt.apply` | Apply Meshes | `Object > Apply > Apply Meshes`; F3 Operator Search | Public | `/all_the_tools/utilities/apply_meshes/` |
 | Utilities | `utilities/_operators.py` `MMT_OT_Clean` | `mmt.clean` | Clean Meshes | `Object > Apply > Clean Meshes`; F3 Operator Search | Public | `/all_the_tools/utilities/clean_meshes/` |
 
+## Public operators left unpublished
+
+These are still registered and public in the source, but have no page, route or search entry.
+
+| Source file and class | `bl_idname` | Label | Exposure | Decision | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| `keyframing/_operators.py` `MMT_OT_GenerateLocomotion` | `mmt.generate_locomotion` | Generate Locomotion | **F3 Operator Search** only. It isn't in a menu or panel. | Unpublished | Jim's release decision on 2026-11-02: it isn't ready for release, so its page was removed from All The Tools. The operator itself is unchanged. |
+
 ## Excluded operators
 
 | Source file and class | `bl_idname` | Label | Decision | Evidence |
@@ -59,20 +68,16 @@ The baseline count of 31 classes (30 public, 1 internal) still holds, and no ope
 
 ## Properties left off pages
 
-Everything else in each operator's RNA, including nested property groups, is in a page's property table.
+Everything else in each published operator's RNA, including nested property groups, is in a page's parameter list.
 
 | `bl_idname` | Property | Reason |
 | --- | --- | --- |
-| `mmt.actions` | `direction` | hidden, covered under Variants |
 | `mmt.export` | `filepath` | file browser path, only its folder is used |
 | `mmt.export` | `check_existing` | inherited ExportHelper setting, not configured |
 | `mmt.export` | `filter_glob` | hidden file filter |
 | `mmt.export` | `settings` | container, expanded above |
 | `mmt.export` | `settings.filmbox.animations` | declared but not drawn, stays at its default of on |
 | `mmt.export` | `settings.filmbox.use_mesh_modifiers` | declared but not drawn and never read by the export |
-| `mmt.generate_locomotion` | `settings` | container, expanded above |
-| `mmt.generate_locomotion` | `settings.swings` | collection, expanded above |
-| `mmt.generate_locomotion` | `settings.resizing` | hidden internal guard |
 | `mmt.generate_loops` | `settings` | container, expanded above |
 | `mmt.generate_loops` | `settings.bones` | collection, expanded above |
 | `mmt.generate_loops` | `settings.bones[].bone` | shown as the box label |
@@ -83,7 +88,6 @@ Everything else in each operator's RNA, including nested property groups, is in 
 | `mmt.import` | `settings` | container, expanded above |
 | `mmt.oriented` | `original_preserve` | hidden internal flag |
 | `mmt.oriented` | `oriented_preserve` | hidden internal flag |
-| `mmt.pose` | `mode` | hidden, covered under Variants |
 | `mmt.redirect_motion` | `settings` | container, expanded above |
 | `mmt.redirect_motion` | `settings.actions` | collection, expanded above |
 | `mmt.redirect_motion` | `settings.actions[].directions` | collection, expanded above |
@@ -91,8 +95,6 @@ Everything else in each operator's RNA, including nested property groups, is in 
 | `mmt.redirect_motion` | `angle` | script only, used when no actions are listed |
 | `mmt.redirect_motion` | `action_name` | script only, used when no actions are listed |
 | `mmt.redirect_motion` | `from_tracks` | hidden internal flag |
-| `mmt.shapes` | `mode` | set by the menu entry, covered under Variants |
-| `mmt.socket` | `mode` | set by the menu entry, covered under Variants |
 | `mmt.split_action` | `settings` | container, expanded above |
 | `mmt.split_action` | `settings.splits` | collection, expanded above |
 | `mmt.split_action` | `settings.source_name` | hidden internal state |
