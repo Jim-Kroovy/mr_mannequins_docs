@@ -1,10 +1,9 @@
 ---
 title: Useful Utilities
 nav_order: 3
-coming_soon: true
 permalink: /useful_utilities/
 ---
 
 # Useful Utilities
 
-Placeholder category page. Utilities will be listed below.
+Guides for smaller jobs that sit alongside the main workflows.

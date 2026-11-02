@@ -1,11 +1,11 @@
 ---
-title: Retargeting Between Armatures
+title: Retargeting Armatures
 parent: Ultimate Workflows
 nav_order: 3
-permalink: /ultimate_workflows/retargeting_between_armatures/
+permalink: /ultimate_workflows/retargeting_armatures/
 ---
 
-# Retargeting Between Armatures
+# Retargeting Armatures
 
 Permanently adapt one character to another character's bone names, directions and hierarchy, carry its animation across, optionally rebuild the same rigging on it, then export the result.
 
@@ -16,13 +16,13 @@ Four armatures are involved:
 - **Target:** a separate reference character that you're matching. Posing works against its Oriented armature, or its Original if it has no Oriented, and never against its Rigging.
 - **Rigging:** optional controls above a character. The Target's Rigging is only where Copy Rigging reads its modules from, and your character gets its own rebuilt separately.
 
-Your character needs its Oriented armature before you start. The Target can get through Set Retarget Pose on its Original alone, but it needs an Oriented armature to hold mapping rows, and you should give it one before Apply Retarget Pose. [Setting Up Custom Character]({% link docs/ultimate_workflows/setting_up_custom_character.md %}) covers creating one, in its steps 1 and 2.
+Your character needs its Oriented armature before you start. The Target can get through Set and Apply Retarget Pose on its Original alone, but it needs an Oriented armature to hold mapping rows. [Custom Character Setup]({% link docs/ultimate_workflows/custom_character_setup.md %}) covers creating one, in its steps 1 and 2.
 
 Do this before adding any rigging to your character. Apply doesn't rebuild an existing Rigging armature, so don't count on one still working afterwards.
 
 ## Video
 
-{% include media/youtube.html title="The full Retargeting Between Armatures workflow: mapping Target bones, setting and cleaning up the retarget pose, applying it with Enforce Hierarchy, pasting the Target's rigging, retargeting the carried actions onto the new controls, exporting and optionally importing into Unreal Engine" %}
+{% include media/youtube.html title="The full Retargeting Armatures workflow: mapping Target bones, setting and cleaning up the retarget pose, applying it with Enforce Hierarchy, pasting the Target's rigging, retargeting the carried actions onto the new controls, exporting and optionally importing into Unreal Engine" %}
 
 ## 1. Configure Bone Mapping
 
@@ -61,8 +61,6 @@ Now check the result, since Apply bakes whatever you leave here:
 {% include media/screenshot.html alt="3D Viewport in Pose mode with the character's Oriented armature and deformed meshes posed beside the Target, and the Retarget Pose redo panel showing Target and Only Selected" %}
 
 ## 3. Apply Retarget Pose
-
-Make sure the Target has an Oriented armature before you run this.
 
 1. Open `Pose > Apply > Apply Retarget Pose`, with the Oriented armature still active. It runs straight away using the last **Target**, so check that's the right one in the redo panel.
 2. Adjust these in the redo panel:
@@ -144,16 +142,15 @@ Import option names and other settings can vary, so check them in your version o
 ## Limitations
 
 - **Compatibility isn't automatic.** Padding, renaming, automatic weights and picking a Skeleton in Unreal Engine don't prove the character is compatible with anything. Check the results.
-- **Apply can fail against a Target with no Oriented armature.** It can raise an error after it has already rebuilt your armatures. That's a known problem, not a supported way of working, so create the Target's Oriented armature first.
 - **Apply is a permanent change.** It changes the rest pose and bakes the meshes, so save a copy first if you might need the old character.
 - **An existing Rigging armature isn't rebuilt.** Apply leaves it out of date, which is why this comes before rigging.
-- **Injected weights are only a starting point.** Only meshes that were already skeletal get them, so a mesh converted from a socket during Apply needs checking by hand.
+- **Injected weights are only a starting point.** Meshes converted from sockets during Apply get them too, but check every injected chain by hand.
 
 ## Related
 
 ### Related Workflows
 
-- [Setting Up Custom Character]({% link docs/ultimate_workflows/setting_up_custom_character.md %}): importing a character, creating its Oriented armature and rigging it.
+- [Custom Character Setup]({% link docs/ultimate_workflows/custom_character_setup.md %}): importing a character, creating its Oriented armature and rigging it.
 - [Edit Existing Animation]({% link docs/ultimate_workflows/edit_existing_animation.md %}): importing, editing and exporting animation files.
 - Rapid Rigging (planned guides): creating and configuring modular animation rigs.
 

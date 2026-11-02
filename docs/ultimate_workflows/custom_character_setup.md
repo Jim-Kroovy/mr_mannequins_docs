@@ -1,11 +1,11 @@
 ---
-title: Setting Up Custom Character
+title: Custom Character Setup
 parent: Ultimate Workflows
 nav_order: 1
-permalink: /ultimate_workflows/setting_up_custom_character/
+permalink: /ultimate_workflows/custom_character_setup/
 ---
 
-# Setting Up Custom Character
+# Custom Character Setup
 
 Import a character FBX, give it an Oriented armature and a modular rig, bring across any animation it came with, then export the result.
 
@@ -15,7 +15,7 @@ If you only want to edit animation files, follow [Edit Existing Animation]({% li
 
 ## Video
 
-{% include media/youtube.html title="The full Setting Up Custom Character workflow: importing a character FBX, creating the Oriented armature, adding the Root, Spine, Head, Arm, Leg and Finger modules, retargeting its existing animation onto the rig and exporting the character" %}
+{% include media/youtube.html title="The full Custom Character Setup workflow: importing a character FBX, creating the Oriented armature, adding the Root, Spine, Head, Arm, Leg and Finger modules, retargeting its existing animation onto the rig and exporting the character" %}
 
 ## 1. Import Custom Character
 
@@ -115,7 +115,6 @@ If the export has to go back onto an existing skeleton, the Original's hierarchy
 - **This is one biped setup.** Other module types and skeletons are for the Rapid Rigging guides (planned).
 - **Actions only come across once.** They're only retargeted onto the Oriented armature when it's created, so actions added to the Original later don't come across on an update.
 - **Don't rename, add or remove bones on the Original** if the export has to go back onto an existing skeleton. The export writes whatever bones the Original has.
-- **Not every destination will take it.** No specific DCC or game engine has been validated with this workflow, and being able to export doesn't make a skeleton compatible with an arbitrary destination.
 
 ## Related
 

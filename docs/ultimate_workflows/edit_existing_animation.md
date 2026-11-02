@@ -11,7 +11,7 @@ Import existing animation FBX files from any source, edit them with Mr Mannequin
 
 Your skeleton doesn't need to be compatible with anything to import it. Compatibility only matters if you choose the optional Target route.
 
-If you're importing skeletal meshes or a custom character, follow [Setting Up Custom Character]({% link docs/ultimate_workflows/setting_up_custom_character.md %}) instead.
+If you're importing skeletal meshes or a custom character, follow [Custom Character Setup]({% link docs/ultimate_workflows/custom_character_setup.md %}) instead.
 
 ## Video
 
@@ -155,7 +155,7 @@ Import option names and other settings can vary, so check them in your version o
 
 ### Related Workflows
 
-- [Setting Up Custom Character]({% link docs/ultimate_workflows/setting_up_custom_character.md %}): preparing custom characters, including those with existing armatures and actions.
+- [Custom Character Setup]({% link docs/ultimate_workflows/custom_character_setup.md %}): preparing custom characters, including those with existing armatures and actions.
 - Rapid Rigging (planned guides): creating and configuring modular animation rigs. Start with [Add Rigging Module]({% link docs/all_the_tools/rigging/add_rigging_module.md %}).
 - Transfer Root Motion (planned guide): transferring motion between the pelvis and root bones. See the [Transfer Root Motion]({% link docs/all_the_tools/keyframing/transfer_root_motion.md %}) operator.
 - Redirect Root Motion (planned guide): changing movement direction to create alternative animations. See the [Redirect Root Motion]({% link docs/all_the_tools/keyframing/redirect_root_motion.md %}) operator.
