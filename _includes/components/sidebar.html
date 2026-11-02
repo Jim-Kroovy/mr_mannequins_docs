@@ -4,11 +4,9 @@
   Results in: HTML for the side bar.
   Includes:
     title.html, components/search_header.html, components/site_nav.html, nav_footer_custom.html
-  Overwrites:
-    nav_footer_custom.
   Should not be cached, because nav_footer_custom.html might depend on page.
 
-  Mr Mannequins: copied from Just the Docs 0.12.0 with search added under the title.
+  Mr Mannequins: copied from Just the Docs 0.12.0 with search added under the title and one site footer for every width.
   The theme's script toggles nav-open on #main-header with the menu button, so that id moved here with it.
 {%- endcomment -%}
 
@@ -28,18 +26,7 @@
 
   {% include_cached components/site_nav.html %}
 
-  {%- comment -%}
-    note: nav_footer_custom and/or this "site footer" appear in components/footer.html for the mobile view.
-  {%- endcomment -%}
-
-  <div class="d-md-block d-none site-footer">
-  {% capture nav_footer_custom %}
-    {%- include nav_footer_custom.html -%}
-  {% endcapture %}
-  {% if nav_footer_custom != "" %}
-    {{ nav_footer_custom }}
-  {% else %}
-    This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
-  {% endif %}
+  <div class="site-footer">
+    {% include nav_footer_custom.html %}
   </div>
 </header>

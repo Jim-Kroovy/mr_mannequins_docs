@@ -1,1 +1,15 @@
-<!-- any content here replaces the theme's attribution, the real footer is footer_custom.html -->
+{%- comment -%} text and urls live in _data/footer.yml, the list is left out when no link is valid... {%- endcomment -%}
+{%- capture social -%}
+  {%- for link in site.data.footer.links -%}
+    {%- assign valid = link.url | is_http_url -%}
+    {%- if valid and link.icon and link.name -%}
+      <li><a class="site-social-link" href="{{ link.url | escape }}" target="_blank" rel="noopener noreferrer" aria-label="{{ link.name | escape }}" title="{{ link.name | escape }}"><img src="{{ link.icon | prepend: '/assets/branding/social/' | relative_url }}" alt="" width="16" height="16"></a></li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+<div class="site-credit">
+  <p>{{ site.data.footer.creator | escape }}</p>
+  {%- if social != "" %}
+  <ul class="site-social" aria-label="Social links">{{ social }}</ul>
+  {%- endif %}
+</div>
