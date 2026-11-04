@@ -10,6 +10,8 @@ permalink: /all_the_tools/exporting/export_mr_mannequins_fbx/
 
 **Mr Mannequins FBX** (`mmt.export`) exports armatures and meshes as compatible FBX files, with baked actions, batching and optional cleanup of prefixed data. It's at `File > Export > Mr Mannequins FBX (.fbx)` and in F3 Operator Search. Pick a folder in the file browser, set the panels and confirm. The Cleaning and Advanced panels are collapsed by default.
 
+{% include media/youtube.html title="Exporting a character with Mr Mannequins FBX: picking a folder, setting the Meshes and Actions panels, turning on Background Export and checking the FBX files written" %}
+
 There's no `poll()` check, but with **Only Selected** on, something exportable has to be selected for anything to be written. Selecting a mesh also pulls in its armature. Actions come from the highest tier in the armature's hierarchy, and the export armature is the Original when there is one, otherwise the Oriented.
 
 FBX files go into the chosen folder, or into the **Folder** subfolder set for meshes or actions, which is created when it doesn't exist. Only the folder from the file browser is used, because every file name comes from the asset being exported. Any run of non alphanumeric characters in a file name becomes an underscore. Batched meshes use the mesh name, and socket meshes add `_<bone>` when **Socket Suffices** is on. Unbatched skeletal meshes write `<armature>_Meshes.fbx`, unbatched static meshes write `<blend file>_Meshes.fbx` (or `Static_Meshes.fbx` in an unsaved file), batched actions use the action name, and unbatched actions are merged into `<armature>_Actions.fbx` as separate FBX animation stacks. Static and socket meshes have their object transforms cleared first, so they export from the origin.

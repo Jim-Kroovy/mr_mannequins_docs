@@ -10,6 +10,8 @@ permalink: /all_the_tools/rigging/custom_shapes/
 
 **Custom Shapes** (`mmt.shapes`) saves or loads custom bone shapes. Saving is stored from mesh evaluations and only supports sharp edges. It's at `Object > Save Custom Shape` and `Object > Load Custom Shape`, and in F3 Operator Search, which uses the Save mode.
 
+{% include media/youtube.html title="Saving a mesh as a custom bone shape from Object > Save Custom Shape, picking it in a shape picker, then loading it back into the scene" %}
+
 **Save** needs selected mesh objects. Each one is written to a `.py` file in the add-on's `rigging/shapes` folder, named from the mesh in lowercase, and modifiers are included because the evaluated mesh gets stored. Only vertices, edges, faces and sharp edge flags are stored. Saved shapes then appear in every shape picker in the add-on. **Warning:** saving overwrites a shape file with the same name. If the shapes folder isn't writable, saving quietly does nothing.
 
 **Load** needs nothing, and links into the active object's collections, or the scene collection when nothing is active. The shape object is created if it isn't in the file already. A shape that's already in a collection isn't linked twice, and picking None does nothing.

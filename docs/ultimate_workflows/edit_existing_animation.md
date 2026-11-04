@@ -29,8 +29,6 @@ If you're importing skeletal meshes or a custom character, follow [Custom Charac
 
 You get one armature named `<file>_Skeleton` for each different skeleton, with an action named after each file, stashed in the NLA. Carry on from step 2.
 
-{% include media/screenshot.html alt="Blender file browser in File > Import > Mr Mannequins FBX with two animation FBX files selected and the Retargeting panel open, Target set to None" %}
-
 ## 1B. Optional: import directly onto a compatible Target
 
 *(Use this when you already know the skeleton is compatible with an armature in the file.)*
@@ -52,8 +50,6 @@ If that hierarchy has a Rigging armature, the actions get baked onto its rigging
 If the Target has no Oriented armature, run step 2 on it before editing.
 
 **Adding more animations later:** to import more animation files for a character you've already set up, pick its existing armature as the **Target**. Importing without a Target creates a separate `<file>_Skeleton` armature and doesn't merge into the existing one, because files only merge within a single import. Using a compatible Target avoids those extra armatures.
-
-{% include media/screenshot.html alt="Blender file browser in File > Import > Mr Mannequins FBX with the Retargeting panel open, a Target armature picked, Actions on, and the Cleaning panel showing Decimate Keyframes set to After" %}
 
 ## 2. Create the Oriented armature
 
@@ -77,8 +73,6 @@ The result is a pair of armatures:
 
 Both armatures finish at rest with no active action. **Max Length** only affects the Oriented armature's bones. The Original keeps the skeleton's own bones, and that's the armature that gets exported.
 
-{% include media/screenshot.html alt="Properties editor Armature tab with the Orientation panel and Create Oriented Armature button, beside a 3D Viewport showing the Oriented armature with the wireframe Original overlaid" %}
-
 ## 3. Pick an action to edit
 
 The add-on doesn't have an operator for picking an action, so use Blender's Action Editor. Once an action is active, the add-on's action tools in step 4 work on it.
@@ -87,8 +81,6 @@ The add-on doesn't have an operator for picking an action, so use Blender's Acti
 2. Open a Dope Sheet in **Action Editor** mode.
 3. Pick the imported action from the action selector. Stashed actions are in the NLA as muted, locked tracks, and they're also listed here.
 4. If the action doesn't play, check that Blender has assigned it an action slot.
-
-{% include media/screenshot.html alt="3D Viewport in Pose mode on the Oriented armature, beside a Dope Sheet in Action Editor mode with an imported action picked from the action selector" %}
 
 ## 4. Edit the animation
 
@@ -127,8 +119,6 @@ To keep your untouched source animation in Blender, duplicate the action first a
 
 Each action is baked from the Oriented armature onto the Original, one key per frame across the action's frame range, then written to FBX. The Original's bones are what end up in the file. Without a Target that's the skeleton you imported, and with a Target it's the Target's skeleton. Actions imported from `Walk.fbx` export as `Walk.fbx`, so choose a different folder or rename the action if you don't want to overwrite your source file. A name Blender has suffixed exports with an underscore, so `Walk.001` writes `Walk_001.fbx`.
 
-{% include media/screenshot.html alt="Blender file browser in File > Export > Mr Mannequins FBX with the Actions panel set to Only Stashed and Batch Export on, and Export off in the Meshes panel" %}
-
 ## 6. Optional: import into Unreal Engine
 
 This step only applies if Unreal Engine is where the animation is going.
@@ -138,8 +128,6 @@ This step only applies if Unreal Engine is where the animation is going.
 3. Open the imported animation to check it.
 
 Import option names and other settings can vary, so check them in your version of Unreal Engine.
-
-{% include media/screenshot.html alt="Unreal Engine import options for the exported FBX, with the matching Skeleton asset selected" %}
 
 ## Limitations
 

@@ -10,6 +10,8 @@ permalink: /all_the_tools/skinning/weight_meshes/
 
 **Weight Meshes** (`mmt.weight`) weights vertices around bones using an adjustable shape. It's at `Weights > Weight Meshes` in Weight Paint mode and in F3 Operator Search. It needs a selected visible mesh with an armature modifier whose armature is also selected, and selected pose bones on that armature. There's no `poll()` check.
 
+{% include media/youtube.html title="Weighting a mesh around selected bones in Weight Paint mode with Weight Meshes, using Show to preview the shape while adjusting Scale and Blend" %}
+
 For each selected bone, a vertex group of the same name gets created when it's missing, and the shape's weight is written to it. Vertices inside the inner bound get full **Weight**, and vertices between the inner and outer bounds fall off. The shape's outer size comes from half the bone's length, multiplied by **Scale**, and the inner size is that multiplied by **Blend**. With **Show** on, wire debug meshes show the inner and outer bounds for each bone, and they're removed again automatically.
 
 Hidden vertices are skipped. Vertices are compared to bones without object transforms, so mesh and armature objects need to line up. Results under 0.00001 aren't written, and with **Remove** on, those vertices are taken out of the group.

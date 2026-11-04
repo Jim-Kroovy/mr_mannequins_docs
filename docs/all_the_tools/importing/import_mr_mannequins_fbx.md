@@ -10,6 +10,8 @@ permalink: /all_the_tools/importing/import_mr_mannequins_fbx/
 
 **Mr Mannequins FBX** (`mmt.import`) imports compatible FBX files, merging repeated skeletons and optionally retargeting the result onto an existing armature. It's at `File > Import > Mr Mannequins FBX (.fbx)` and in F3 Operator Search. Pick one or more `.fbx` files, set the panels and confirm. The Advanced panel is collapsed by default. There's no `poll()` check, but Blender's FBX importer add-on has to be available, since the import calls `import_scene.fbx`.
 
+{% include media/youtube.html title="Importing two FBX files with Mr Mannequins FBX so their matching skeletons merge into one armature, then importing an animation file onto an existing Target" %}
+
 Imported meshes are renamed after their file, with object and mesh data names kept matching. Armatures are named `<file>_Skeleton`, and new actions are named after the file. Armatures from different files that have the same bone names, hierarchy and root relative rest poses are merged: the first one is kept and later files add their meshes and actions to it. A root bone named after the imported armature object is added when no bone has that name, and parentless bones are parented to it. Object level animation is moved onto that root bone and scaled, and all transforms and parenting are cleared and applied.
 
 Every action gets stashed, and an armature with skeletal meshes finishes at rest with no active action. Imported empties are removed, and duplicate materials and images with numbered names are switched onto the ones already in the file. The imported objects stay selected, and the previous mode is restored when it can be. Custom properties and animation are always imported.

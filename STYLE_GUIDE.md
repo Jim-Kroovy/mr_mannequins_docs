@@ -25,11 +25,11 @@ Assume the reader already knows Blender, Unreal and 3D work. Don't explain what 
 ## Layout
 
 - Open with a short introductory paragraph, then use descriptive headings. `#` is the page title, `##` the main sections and `###` their subsections.
-- A workflow's Video section goes straight after its introductory description and before its first numbered step, because most readers will go to the video first.
+- Every operator, module, workflow and utility page has one video, straight after its introductory description and before the rest of the page, because most readers will go to it first. Workflow and utility pages put it under a `## Video` heading, and module and operator pages don't.
 - Workflow pages have no generic Requirements or Procedure sections. Each workflow step is its own `##` heading with its numbered steps directly under it.
 - Alternate workflow steps share a number, like 1A and 1B. Put when to use each one directly below its heading, in parenthesized italics.
 - Use compact lists for choices and related tools. Workflow pages don't use tables.
-- Operator pages are flat: the `#` title, prose describing the operator, then a bullet list of its parameters. They have no subheadings, tables or media.
+- Operator pages are flat: the `#` title, an introductory paragraph, the video, any more prose describing the operator, then a bullet list of its parameters. They have no subheadings or tables.
 - Essential prerequisites, results, warnings and the operator's `bl_idname`, label and location live in that introductory prose, not in bold pseudo-headings or metadata bullets.
 - Every bullet after the prose is a parameter, or a value set by a menu entry or button. Prefix a panel or group like `Meshes > Socket Suffices` where it helps, and indent choices or row fields under their parameter. An operator with no parameters ends after its prose. Write each one like this:
 
@@ -50,8 +50,9 @@ Assume the reader already knows Blender, Unreal and 3D work. Don't explain what 
 
 ## Media
 
-- A written page must be complete without its media. Nothing gets explained only in a video or screenshot.
-- Always use the `media/screenshot.html` and `media/youtube.html` includes. Don't write image or iframe markup by hand.
-- Leave out `src` or `id` for a placeholder, and describe exactly what the finished media needs to show.
-- Alt text and video titles describe what's shown, not just the name of the feature.
-- Producing media is separate work. Don't hold back a page waiting for it.
+- Videos are short demonstrations on top of the writing. The written page is what counts and has to work on its own, so nothing gets explained only in a video.
+- Video is the only media. Pages don't use images.
+- Always use the `media/youtube.html` include. Don't write iframe markup by hand.
+- Leave out `id` for a placeholder, and describe exactly what the finished video needs to show.
+- Video titles describe what's shown on that page, not just the name of the feature, so no two are the same.
+- Recording videos is separate work. Don't hold back a page waiting for one.

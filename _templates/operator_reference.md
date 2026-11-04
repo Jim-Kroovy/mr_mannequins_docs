@@ -10,6 +10,8 @@ permalink: /all_the_tools/category_name/operator_name/
 
 **Exact `bl_label`** (`mmt.operator_name`) does what this operator does, in a sentence or two. Say where to find it and what `poll()`, the mode, the selection or the data needs.
 
+{% include media/youtube.html title="What the finished video needs to show" %}
+
 Use another short paragraph for what changes once it has run, including anything it creates, renames, stashes or removes, along with warnings, silent skips and where it stops working. Only link another page when it's needed to use this operator correctly. If there are no settings, end the page here.
 
 - **Exact UI Name** (`identifier`) — Checkbox; default Off. Source description, followed by when it's available.

@@ -10,6 +10,8 @@ permalink: /all_the_tools/orientation/set_bone_orientation/
 
 **Set Bone Orientation** (`mmt.orient`) orients bone tails and rolls to align axes in the input space. It's at `Pose > Apply > Set Bone Orientation` and in F3 Operator Search, which also works in Edit mode. It needs an active armature with selected bones, in Pose or Edit mode. There's no `poll()` check, so this comes from what the operator reads.
 
+{% include media/youtube.html title="Orienting selected bones with Set Bone Orientation, switching between Auto and a set Primary and Secondary axis and checking the bone tails and rolls" %}
+
 Each selected bone keeps its head and length, with its tail pointing along **Primary** and its roll aligned to **Secondary**. **Auto** works it out from the bone's children, parent and chain, using the matching bone on the Original armature when there is one, and a bone with no match on the hierarchy armature is skipped. Mesh children parented directly to a selected bone are converted to skeletal and back, so they stay in place. When the armature has both an Oriented and Original tier, the Original's parent constraints are refreshed. The previous mode, selection and hidden state are restored.
 
 On an Oriented armature, keyed rotation and location in its actions are corrected so they keep looking the same. **Warning:** this changes rest orientation, and on armatures that aren't tagged Oriented, keyed animation isn't corrected. It quietly does nothing while **Primary** and **Secondary** share an axis, or while **Space** is Target without a valid bone.

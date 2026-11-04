@@ -54,16 +54,10 @@ Internal links use the source path, which adds the `baseurl` and fails the build
 [Operator Name]({% link docs/all_the_tools/category_name/operator_name.md %})
 ```
 
-Put images in `assets/images`, and pass paths without a leading slash:
-
-```liquid
-{% include media/screenshot.html src="assets/images/file.png" alt="What the image shows" caption="Optional caption" %}
-```
-
-Videos use the privacy-enhanced YouTube domain and scale with the page. `start` is optional, in seconds:
+Video is the only media on a page. Each one gets a single short video straight after its introductory description, and the writing has to stand on its own without it. Videos use the privacy-enhanced YouTube domain and scale with the page. `start` is optional, in seconds:
 
 ```liquid
 {% include media/youtube.html id="VIDEO_ID" title="What the video shows" start="30" %}
 ```
 
-Leave out `src` or `id` to show a placeholder that describes the missing media. For any other asset path, use `{{ "assets/file.zip" | relative_url }}` rather than writing the project path by hand.
+Leave out `id` to show a placeholder that describes the missing video. For any asset path, use `{{ "assets/file.zip" | relative_url }}` rather than writing the project path by hand.

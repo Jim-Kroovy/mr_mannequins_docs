@@ -41,8 +41,6 @@ An exact name always wins. Otherwise the rows are tried in order, and the first 
 
 **Rotation** and **Translation** don't affect the steps that follow, since Set Retarget Pose only uses bone correspondence and directions. They apply when actions get retargeted.
 
-{% include media/screenshot.html alt="3D Viewport in Pose mode on the Target armature, with the Sidebar Item tab showing the Retargeting panel and a Bone Mapping row holding the matching bone name from the other character" %}
-
 ## 2. Set Retarget Pose
 
 1. Make your character's Oriented armature active.
@@ -57,8 +55,6 @@ Now check the result, since Apply bakes whatever you leave here:
 1. Look at the meshes, which follow through the Original.
 2. Compare the joint axes, silhouette, hands, feet, root, pelvis and extremities against the Target.
 3. Correct any unwanted rotation or translation by posing the Oriented armature by hand.
-
-{% include media/screenshot.html alt="3D Viewport in Pose mode with the character's Oriented armature and deformed meshes posed beside the Target, and the Retarget Pose redo panel showing Target and Only Selected" %}
 
 ## 3. Apply Retarget Pose
 
@@ -86,8 +82,6 @@ Inspect every injected chain, and fix its deformation and vertex groups by hand 
 
 **Rename Bones** only covers bones with a match. Bones only your character has keep their names, and Target branches outside those gaps aren't created. Check the Original's final names and hierarchy yourself.
 
-{% include media/screenshot.html alt="3D Viewport after Apply Retarget Pose with the redo panel showing Max Length, Rename Bones and Enforce Hierarchy, and an injected bone chain selected in the Outliner" %}
-
 ## 4. Optional: Copy Rigging
 
 This needs a Target with a Rigging armature. Modules find their bones by name, so this works best with **Rename Bones** on in step 3. See [Copy Rigging]({% link docs/all_the_tools/rigging/copy_rigging.md %}).
@@ -108,8 +102,6 @@ If your character has actions, retarget them onto the new controls now. They're 
 3. In the redo panel, set **Target** to your character's own Oriented armature.
 4. Leave **Only Selected** off and **Keep Original** on.
 
-{% include media/screenshot.html alt="Properties editor Rigging Modules panel with the down arrow menu open on Paste Rigging, beside a 3D Viewport showing the pasted controls on the retargeted character" %}
-
 ## 5. Export Character
 
 Before you export, check the rest pose, the complete bone list and parent hierarchy, the mesh deformation, vertex groups, action ranges and names, and some representative motion.
@@ -125,8 +117,6 @@ The Original is written as the skeleton. Actions come from the highest tier, bak
 
 Whether this goes back onto the Target's skeleton depends on the Original's final names and hierarchy, and on the destination's own rules. **Rename Bones** and **Enforce Hierarchy** bring the two closer together, but they don't guarantee it, especially when either skeleton has extra branches the other doesn't.
 
-{% include media/screenshot.html alt="Blender file browser in File > Export > Mr Mannequins FBX with the Meshes and Actions panels open, and the retargeted character's skeletal meshes selected in the scene" %}
-
 ## 6. Optional: Import into Unreal Engine
 
 This step only applies if Unreal Engine is where the character is going.
@@ -136,8 +126,6 @@ This step only applies if Unreal Engine is where the character is going.
 3. Check the mesh deformation, reference pose, bone tree, animation playback, root motion, scale and axes.
 
 Import option names and other settings can vary, so check them in your version of Unreal Engine.
-
-{% include media/screenshot.html alt="Unreal Engine Skeleton editor showing the imported character's bone tree and reference pose, beside its skeletal mesh import options with the matching Skeleton asset selected" %}
 
 ## Limitations
 

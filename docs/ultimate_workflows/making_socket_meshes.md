@@ -27,8 +27,6 @@ Applying matters for two of those:
 - **Rotation:** Socket replaces the object's rotation, so a rotation that isn't applied first moves the mesh.
 - **Scale:** Socket leaves it alone, but the export resets it, so a scale that isn't applied first changes the size in the file.
 
-{% include media/screenshot.html alt="3D Viewport in Object mode with a prop mesh positioned against a hand bone in rest pose, and the Object > Apply menu open on All Transforms" %}
-
 ## 2. Assign Bone Weights
 
 1. Add an Armature modifier to the mesh, pointing at the character's Original armature.
@@ -37,8 +35,6 @@ Applying matters for two of those:
 Use the Original because it's the skeleton that gets exported, so the mesh takes on the transform of the bone it'll follow at the destination. The operator doesn't check which armature you pointed it at.
 
 The weights only pick the bone. How they're spread doesn't change anything, because the whole mesh ends up rigidly attached to that bone. If the first valid Armature modifier's armature has more than one bone with weight on the mesh, the mesh is skipped. Zero weight groups and groups that don't match a bone don't count.
-
-{% include media/screenshot.html alt="Properties editor Object Data tab showing a single vertex group named after the hand bone, beside the Modifiers tab with an Armature modifier pointing at the Original armature" %}
 
 ## 3. Create Socket Meshes
 
@@ -57,8 +53,6 @@ Meshes that don't qualify are skipped with no message, so check the result:
 
 To edit one again, use `Object > Apply > Unsocket Meshes`, which puts it back to a fully weighted skeletal mesh.
 
-{% include media/screenshot.html alt="3D Viewport with the converted prop selected and its origin on the bone's head, beside the Object Properties Relations panel showing Parent Type Bone and the Socket Meshes redo panel with Add Suffices" %}
-
 ## 4. Export Socket Meshes
 
 1. Select the socket meshes. **Only Selected** is on by default, and selecting a socket mesh also finds its armature.
@@ -73,8 +67,6 @@ Every socket mesh gets its own FBX whatever **Batch Export** is set to, written 
 
 **Socket Suffices** is on by default and adds `_<bone>` to the file name, so `Prop` on the `hand` bone writes `Prop_hand.fbx`. A name already ending in `_<bone>` doesn't get it twice, and the object itself isn't renamed. This is separate from **Add Suffices** in step 3, which renames the object. Any run of characters that aren't letters or numbers becomes an underscore in the file name.
 
-{% include media/screenshot.html alt="Blender file browser in File > Export > Mr Mannequins FBX with the Meshes panel open showing Socket Meshes and Socket Suffices on, and the socket meshes selected in the scene" %}
-
 ## 5. Optional: Import into Unreal Engine
 
 This step only applies if Unreal Engine is where the character is going. The add-on doesn't create Skeleton sockets or Blueprint components, so this is all done in Unreal.
@@ -86,8 +78,6 @@ This step only applies if Unreal Engine is where the character is going. The add
 5. Check the relative transform, orientation and scale in the Blueprint viewport, then check that it follows the animation in play mode.
 
 Import option names and other settings can vary, so check them in your version of Unreal Engine.
-
-{% include media/screenshot.html alt="Unreal Engine Blueprint editor with a Static Mesh component parented to the character's Skeletal Mesh component, and the Details panel showing Parent Socket set to the hand bone" %}
 
 ## Limitations
 

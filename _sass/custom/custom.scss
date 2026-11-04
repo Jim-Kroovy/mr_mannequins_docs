@@ -64,19 +64,8 @@
 }
 
 // Media...
-.media-video,
-.media-screenshot {
-  margin: $sp-4 0;
-
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-}
-
 .media-video {
-  margin-bottom: $sp-1;
+  margin: $sp-4 0 $sp-1;
   aspect-ratio: 16 / 9;
 
   iframe {

@@ -20,8 +20,6 @@ What this workflow produces and when to use it, in a sentence or two.
 1. One action per step, using the exact UI name.
 2. Link to operators instead of explaining them: [Operator Name]({% link docs/all_the_tools/category_name/operator_name.md %}).
 
-{% include media/screenshot.html alt="What the finished screenshot needs to show" %}
-
 ## 1B. Alternate First Step
 
 *(Use this when the other route is the right choice.)*

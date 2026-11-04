@@ -10,6 +10,8 @@ permalink: /all_the_tools/orientation/set_oriented_armature/
 
 **Set Oriented Armature** (`mmt.oriented`) makes a Blender compatible armature by orienting bones using shortest rolls by matching names, adding any new bones from the original. It's at `Pose > Apply` as **Create Oriented Armature** or **Update Oriented Armature**, depending on whether the armature already has an oriented pair. The same label is at `Properties > Armature > Orientation`, and it's also in F3 Operator Search. It needs an active armature. There's no `poll()` check, and it reads the armature hierarchy of the active object.
 
+{% include media/youtube.html title="Creating an Oriented armature from Pose > Apply, then adding a bone to the Original and running Update Oriented Armature" %}
+
 **Create** renames the armature `<name>_Original` and adds a new `<name>_Oriented`, with matching bones aimed along the closest axis and constraints binding the original's bones to it. The original is parented to the oriented armature and displayed as wire, with both shown in front. Socket meshes on it are converted to skeletal, and its meshes follow the new parent. With **Retarget Actions** on, the original's active and stashed actions are retargeted onto the oriented armature and stashed there, and both armatures finish at rest. An existing Rigging child armature is handed over to sit above the new pair.
 
 **Update** adds any bones the original has that the oriented doesn't, and reassigns the shapes. It doesn't retarget actions, so **Retarget Actions** has no effect on an existing pair, and it doesn't remove oriented bones the original no longer has.
